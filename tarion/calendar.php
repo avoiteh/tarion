@@ -1,7 +1,7 @@
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=win1251" />
-	<title>Календарь</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>РљР°Р»РµРЅРґР°СЂСЊ</title>
 	<meta name="robots" content="noindex,nofollow" />
 </head>
 <body>
@@ -159,9 +159,9 @@ form.clock {
 </style>
 <script src="tbl_change.js"></script>
 <script>
-var month_names = new Array("Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь");
-var day_names = new Array("Пн","Вт","Ср","Чт","Пт","Сб","Вс");
-var submit_text = " Время ";
+var month_names = new Array("РЇРЅРІР°СЂСЊ","Р¤РµРІСЂР°Р»СЊ","РњР°СЂС‚","РђРїСЂРµР»СЊ","РњР°Р№","РСЋРЅСЊ","РСЋР»СЊ","РђРІРіСѓСЃС‚","РЎРµРЅС‚СЏР±СЂСЊ","РћРєС‚СЏР±СЂСЊ","РќРѕСЏР±СЂСЊ","Р”РµРєР°Р±СЂСЊ");
+var day_names = new Array("РџРЅ","Р’С‚","РЎСЂ","Р§С‚","РџС‚","РЎР±","Р’СЃ");
+var submit_text = " Р’СЂРµРјСЏ ";
 </script>
 </head>
 <body onload="initCalendar();">

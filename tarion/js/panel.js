@@ -7,28 +7,28 @@ function TPanel(name,hname,context){
 	this.mouseDY=0;
 	this.enable = true;
 	this.open = true;
-	this.context=context;//на каком контексте лежит
-	this.style=0;//числовой указатель стиля
-	this.color=0;//числовой указатель цвета фона 0-белый
+	this.context=context;//РЅР° РєР°РєРѕРј РєРѕРЅС‚РµРєСЃС‚Рµ Р»РµР¶РёС‚
+	this.style=0;//С‡РёСЃР»РѕРІРѕР№ СѓРєР°Р·Р°С‚РµР»СЊ СЃС‚РёР»СЏ
+	this.color=0;//С‡РёСЃР»РѕРІРѕР№ СѓРєР°Р·Р°С‚РµР»СЊ С†РІРµС‚Р° С„РѕРЅР° 0-Р±РµР»С‹Р№
 	this.left=100;
 	this.top=0;
 	this.width=100;
 	this.height=50;
 	this.Paint=function(){
-		//назначить цвет фона
+		//РЅР°Р·РЅР°С‡РёС‚СЊ С†РІРµС‚ С„РѕРЅР°
 		var bgk=this.color;
 		switch(this.color){
 			case 0:
 				bgk='ffffff';
 			break;
 		}
-		//собственно панель
+		//СЃРѕР±СЃС‚РІРµРЅРЅРѕ РїР°РЅРµР»СЊ
 		switch(this.style){
 			case 0:
 				var s="<table id='"+this.hname+"' style='width:"+this.width+"px;height:"+this.height+"px;background-color:#"+bgk+";border:1px solid #000000;position:absolute;left:"+this.left+";top:"+this.top+";z-index:100' onmouseover='"+this.context.name+".currentobject="+this.name+";'><tr><td align='right' height=10><img src='"+context.images_path+"close.gif' onmousedown='"+this.context.name+".Opened("+this.name+", false);'><img src='"+context.images_path+"free.gif' onmousedown='"+this.context.name+".freeObject("+this.name+");'></td></tr><tr><td>&nbsp;</td></tr></table>";
 			break;
 		}
 		return s;
-	}//функция отрисовки, однако, она просто возвращает HTML! 
-					//ибо непосредственной отрисовкой занимается контекст
+	}//С„СѓРЅРєС†РёСЏ РѕС‚СЂРёСЃРѕРІРєРё, РѕРґРЅР°РєРѕ, РѕРЅР° РїСЂРѕСЃС‚Рѕ РІРѕР·РІСЂР°С‰Р°РµС‚ HTML! 
+					//РёР±Рѕ РЅРµРїРѕСЃСЂРµРґСЃС‚РІРµРЅРЅРѕР№ РѕС‚СЂРёСЃРѕРІРєРѕР№ Р·Р°РЅРёРјР°РµС‚СЃСЏ РєРѕРЅС‚РµРєСЃС‚
 }

@@ -357,3 +357,57 @@ function returnDate(d) {
 	}
 	window.close();
 }
+function tree_toggle(event) {
+	event = event || window.event
+	var clickedElem = event.target || event.srcElement
+
+	if (!hasClass(clickedElem, 'Expand')) {
+		return // РєР»РёРє РЅРµ С‚Р°Рј
+	}
+
+	// Node, РЅР° РєРѕС‚РѕСЂС‹Р№ РєР»РёРєРЅСѓР»Рё
+	var node = clickedElem.parentNode
+	if (hasClass(node, 'ExpandLeaf')) {
+		return // РєР»РёРє РЅР° Р»РёСЃС‚Рµ
+	}
+
+	// РѕРїСЂРµРґРµР»РёС‚СЊ РЅРѕРІС‹Р№ РєР»Р°СЃСЃ РґР»СЏ СѓР·Р»Р°
+	var newClass = hasClass(node, 'ExpandOpen') ? 'ExpandClosed' : 'ExpandOpen'
+	// Р·Р°РјРµРЅРёС‚СЊ С‚РµРєСѓС‰РёР№ РєР»Р°СЃСЃ РЅР° newClass
+	// СЂРµРіРµРєСЃРї РЅР°С…РѕРґРёС‚ РѕС‚РґРµР»СЊРЅРѕ СЃС‚РѕСЏС‰РёР№ open|close Рё РјРµРЅСЏРµС‚ РЅР° newClass
+	var re =  /(^|\s)(ExpandOpen|ExpandClosed)(\s|$)/
+	node.className = node.className.replace(re, '$1'+newClass+'$3')
+}
+
+
+function hasClass(elem, className) {
+	return new RegExp("(^|\\s)"+className+"(\\s|$)").test(elem.className)
+}
+
+function tree_toggle(event) {
+	event = event || window.event
+	var clickedElem = event.target || event.srcElement
+
+	if (!hasClass(clickedElem, 'Expand')) {
+		return // РєР»РёРє РЅРµ С‚Р°Рј
+	}
+
+	// Node, РЅР° РєРѕС‚РѕСЂС‹Р№ РєР»РёРєРЅСѓР»Рё
+	var node = clickedElem.parentNode
+	if (hasClass(node, 'ExpandLeaf')) {
+		return // РєР»РёРє РЅР° Р»РёСЃС‚Рµ
+	}
+
+	// РѕРїСЂРµРґРµР»РёС‚СЊ РЅРѕРІС‹Р№ РєР»Р°СЃСЃ РґР»СЏ СѓР·Р»Р°
+	var newClass = hasClass(node, 'ExpandOpen') ? 'ExpandClosed' : 'ExpandOpen'
+	// Р·Р°РјРµРЅРёС‚СЊ С‚РµРєСѓС‰РёР№ РєР»Р°СЃСЃ РЅР° newClass
+	// СЂРµРіРµРєСЃРї РЅР°С…РѕРґРёС‚ РѕС‚РґРµР»СЊРЅРѕ СЃС‚РѕСЏС‰РёР№ open|close Рё РјРµРЅСЏРµС‚ РЅР° newClass
+	var re =  /(^|\s)(ExpandOpen|ExpandClosed)(\s|$)/
+	node.className = node.className.replace(re, '$1'+newClass+'$3')
+}
+
+
+function hasClass(elem, className) {
+	return new RegExp("(^|\\s)"+className+"(\\s|$)").test(elem.className)
+}
+

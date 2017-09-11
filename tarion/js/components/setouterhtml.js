@@ -1,4 +1,4 @@
-// Проверяем знает ли браузер про HTMLElement.
+// РџСЂРѕРІРµСЂСЏРµРј Р·РЅР°РµС‚ Р»Рё Р±СЂР°СѓР·РµСЂ РїСЂРѕ HTMLElement.
 if (typeof(HTMLElement) != "undefined") {
     var _emptyTags = {
        "IMG": true,

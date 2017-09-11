@@ -1,10 +1,10 @@
 function FileManager() {
     /*
-     * метод запуска файлового менеджера
+     * РјРµС‚РѕРґ Р·Р°РїСѓСЃРєР° С„Р°Р№Р»РѕРІРѕРіРѕ РјРµРЅРµРґР¶РµСЂР°
      *
      */
     this.Paint = function () {
-        // создаём на странице необзодимые для отображения html-элементы
+        // СЃРѕР·РґР°С‘Рј РЅР° СЃС‚СЂР°РЅРёС†Рµ РЅРµРѕР±Р·РѕРґРёРјС‹Рµ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ html-СЌР»РµРјРµРЅС‚С‹
         document.write ('<div id="file_manager">');
         document.write ('</div>');
         var div_fm = document.getElementById('file_manager');
@@ -16,12 +16,12 @@ function FileManager() {
         div_panels.innerHTML += '<div id="fm_right"></div>';
 
         
-        // создаём необходимые js-объекты
+        // СЃРѕР·РґР°С‘Рј РЅРµРѕР±С…РѕРґРёРјС‹Рµ js-РѕР±СЉРµРєС‚С‹
         var div_left = document.getElementById('fm_left');
         var div_right = document.getElementById('fm_right');
         var div_button = document.getElementById('fm_right');
         
-        // запускаем методы отображения левой и правой колонок менеджера
+        // Р·Р°РїСѓСЃРєР°РµРј РјРµС‚РѕРґС‹ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ Р»РµРІРѕР№ Рё РїСЂР°РІРѕР№ РєРѕР»РѕРЅРѕРє РјРµРЅРµРґР¶РµСЂР°
         this.getDir(div_left);
         this.getDir(div_right);
         
@@ -33,7 +33,7 @@ function FileManager() {
             {
             	position.innerHTML = '';
                 var data = eval("(" + o.responseText + ")");
-    			position.innerHTML += "<div>Содержимое директории: " + data['path'] + "</div>";
+    			position.innerHTML += "<div>РЎРѕРґРµСЂР¶РёРјРѕРµ РґРёСЂРµРєС‚РѕСЂРёРё: " + data['path'] + "</div>";
     			
     			for(i=0; i<data.dirs.length; i++)
     			{
@@ -89,8 +89,8 @@ function FileManager() {
 			
 		
 		var postDat = { 
-          	 'path'   :   url
-        };
+В  В  В  В  В  	 'path'В  В :В  В url
+В  В  В  В  };
 		var postData = YAHOO.util.param(postDat);
         
 		var request = YAHOO.util.Connect.asyncRequest('POST', sUrl, callback, postData);

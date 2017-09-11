@@ -1,4 +1,4 @@
-//визуальный компонент для отображения дерева
+//РІРёР·СѓР°Р»СЊРЅС‹Р№ РєРѕРјРїРѕРЅРµРЅС‚ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РґРµСЂРµРІР°
 function TTree(name,hname,maincontext){
 	this.name = name;
 	this.hname=hname;
@@ -10,26 +10,26 @@ function TTree(name,hname,maincontext){
 	this.sel_bgcolor='#0000ff';
 	this.width='100%';
 	this.height='100%';
-	this.tree = new Array;//многовложенный массив, собственно отображаемое дерево
+	this.tree = new Array;//РјРЅРѕРіРѕРІР»РѕР¶РµРЅРЅС‹Р№ РјР°СЃСЃРёРІ, СЃРѕР±СЃС‚РІРµРЅРЅРѕ РѕС‚РѕР±СЂР°Р¶Р°РµРјРѕРµ РґРµСЂРµРІРѕ
 	this.parent='';
 	
 	this.style = 0;
 	
 	this.levelsize=new Array(18,10,10,10,10,8,8);
 	
-	this.node_name='name';//имя поля для отображения названия пункта
-	this.node_node='node';//имя поля для ветки данного пункта
-	this.node_id='id';//имя поля для идентификатора пункта (возвращается при клике)
-	this.node_level='level';//имя поля уровня ветки
-	this.node_kolvo='kolvo';//количество элементов в подветке
+	this.node_name='name';//РёРјСЏ РїРѕР»СЏ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РЅР°Р·РІР°РЅРёСЏ РїСѓРЅРєС‚Р°
+	this.node_node='node';//РёРјСЏ РїРѕР»СЏ РґР»СЏ РІРµС‚РєРё РґР°РЅРЅРѕРіРѕ РїСѓРЅРєС‚Р°
+	this.node_id='id';//РёРјСЏ РїРѕР»СЏ РґР»СЏ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂР° РїСѓРЅРєС‚Р° (РІРѕР·РІСЂР°С‰Р°РµС‚СЃСЏ РїСЂРё РєР»РёРєРµ)
+	this.node_level='level';//РёРјСЏ РїРѕР»СЏ СѓСЂРѕРІРЅСЏ РІРµС‚РєРё
+	this.node_kolvo='kolvo';//РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РІ РїРѕРґРІРµС‚РєРµ
 	this.node_title='';
-	this.edit=false;//флаг разрешающий редактировать дерево
+	this.edit=false;//С„Р»Р°Рі СЂР°Р·СЂРµС€Р°СЋС‰РёР№ СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РґРµСЂРµРІРѕ
 	
-	this.gloMegaTreeFlag=0;//тупо костыль, для присвоения сквозного идентификатора веткам дерева
+	this.gloMegaTreeFlag=0;//С‚СѓРїРѕ РєРѕСЃС‚С‹Р»СЊ, РґР»СЏ РїСЂРёСЃРІРѕРµРЅРёСЏ СЃРєРІРѕР·РЅРѕРіРѕ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂР° РІРµС‚РєР°Рј РґРµСЂРµРІР°
 
-	//this.backEdit=function(type,id){alert("type="+type+"\nid="+id);}//функция вызываемая при клике на кнопки редактирования
-	this.backFunction=function(id, kolvo){alert(id);}//функция вызываемая при клике, её передаётся идентификатор пункта
-	this.onmousemove=function(){}//очень нужная заглушка!!!
+	//this.backEdit=function(type,id){alert("type="+type+"\nid="+id);}//С„СѓРЅРєС†РёСЏ РІС‹Р·С‹РІР°РµРјР°СЏ РїСЂРё РєР»РёРєРµ РЅР° РєРЅРѕРїРєРё СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+	this.backFunction=function(id, kolvo){alert(id);}//С„СѓРЅРєС†РёСЏ РІС‹Р·С‹РІР°РµРјР°СЏ РїСЂРё РєР»РёРєРµ, РµС‘ РїРµСЂРµРґР°С‘С‚СЃСЏ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїСѓРЅРєС‚Р°
+	this.onmousemove=function(){}//РѕС‡РµРЅСЊ РЅСѓР¶РЅР°СЏ Р·Р°РіР»СѓС€РєР°!!!
 	
 	this.editButtonsPaint=function(node){//id,kolvo,name){
 		if(this.edit){
@@ -70,14 +70,14 @@ function TTree(name,hname,maincontext){
 		}else{
 			obj1.style.display='none';
 			obj0.style.display='block';
-			//а так же сохранить новое наименование
+			//Р° С‚Р°Рє Р¶Рµ СЃРѕС…СЂР°РЅРёС‚СЊ РЅРѕРІРѕРµ РЅР°РёРјРµРЅРѕРІР°РЅРёРµ
 		}
 	}
 	
 	this.paintTree=function(node){
 		var s='';
 		for(var i in node){
-			//добавляем поле "ветка раскрыта", если его нет
+			//РґРѕР±Р°РІР»СЏРµРј РїРѕР»Рµ "РІРµС‚РєР° СЂР°СЃРєСЂС‹С‚Р°", РµСЃР»Рё РµРіРѕ РЅРµС‚
 			if(node[i]['open']==null){node[i]['open']=true;}
 			s+="<table border=0 cellspacing=0 cellpadding=0 width=100%><tr><td valign=top nowrap>";
 			s+="<img src='images/null.png' style='width:" + (node[i]['level'] * 10) + "px;height:10px;'>";
@@ -130,7 +130,7 @@ function TTree(name,hname,maincontext){
 		switch(this.style){
 			case 0:
 				s = "<div onmousemove='" + this.name + ".onmousemove(event);' style='overflow:scroll;width:" + this.width + ";height:" + this.height + "' id='" + this.hname + "'>";
-				//оттут унутре tree
+				//РѕС‚С‚СѓС‚ СѓРЅСѓС‚СЂРµ tree
 				this.gloMegaTreeFlag=0;
 				if(this.edit){
 					s+=s='<img src="images/add_page.png" onclick="' + this.name + '.newName(0);">';
@@ -141,5 +141,5 @@ function TTree(name,hname,maincontext){
 		}
 		//alert(this.debug);
 		return s;
-	}//функция отрисовки, однако, она просто возвращает HTML! 
+	}//С„СѓРЅРєС†РёСЏ РѕС‚СЂРёСЃРѕРІРєРё, РѕРґРЅР°РєРѕ, РѕРЅР° РїСЂРѕСЃС‚Рѕ РІРѕР·РІСЂР°С‰Р°РµС‚ HTML! 
 }

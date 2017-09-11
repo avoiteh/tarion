@@ -6,8 +6,8 @@ function TMenuItem(name, parentItem, title, mainMenu){
 	this.position='relative';
 	this.left=0;
 	this.top=0;
-	this.style=0;//0 - горизонтальный
-				//1 - вертикальный
+	this.style=0;//0 - РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅС‹Р№
+				//1 - РІРµСЂС‚РёРєР°Р»СЊРЅС‹Р№
 	this.itemList = new Array;
 	this.ChildsPaint=function(){
 		switch(this.style){
@@ -15,8 +15,8 @@ function TMenuItem(name, parentItem, title, mainMenu){
 				var s="<table id='H"+this.name+"' style='width:100%;border:1px solid #000000;background-color:#dddddd;position:"+this.position+";left:"+this.left+";top:"+this.top+";display:block'><tr>";
 				for(var id in this.itemList){
 					s+="<td nowrap ";
-					s+="onmouseover='"+this.parentItem.name+".DropDown(\""+this.itemList[id].name+"\")' ";//выпасть меню
-					s+="onmousedown='"+this.parentItem.name+".OnMenuItemClick(\"" +this.itemList[id].name+"\");' ";//передать клик
+					s+="onmouseover='"+this.parentItem.name+".DropDown(\""+this.itemList[id].name+"\")' ";//РІС‹РїР°СЃС‚СЊ РјРµРЅСЋ
+					s+="onmousedown='"+this.parentItem.name+".OnMenuItemClick(\"" +this.itemList[id].name+"\");' ";//РїРµСЂРµРґР°С‚СЊ РєР»РёРє
 					s+=">"+this.itemList[id].title+"</td>";
 				}
 				s+="</tr></table>";
@@ -25,8 +25,8 @@ function TMenuItem(name, parentItem, title, mainMenu){
 				var s="<table style='width:100%;border:1px solid #000000;background-color:#dddddd;position:"+this.position+";left:"+this.left+";top:"+this.top+"'>";
 				for(var id in this.itemList){
 					s+="<tr><td nowrap ";
-					s+="onmouseover='"+this.parentItem.name+".DropDown(\""+this.itemList[id].name+"\")' ";//выпасть меню
-					s+="onmousedown='"+this.parentItem.name+".OnMenuItemClick(\"" +this.itemList[id].name+"\");' ";//передать клик
+					s+="onmouseover='"+this.parentItem.name+".DropDown(\""+this.itemList[id].name+"\")' ";//РІС‹РїР°СЃС‚СЊ РјРµРЅСЋ
+					s+="onmousedown='"+this.parentItem.name+".OnMenuItemClick(\"" +this.itemList[id].name+"\");' ";//РїРµСЂРµРґР°С‚СЊ РєР»РёРє
 					s+=">"+this.itemList[id].title+"</td></tr>";
 				}
 				s+="</table>";
@@ -43,7 +43,7 @@ function TMainMenu(name, hname, parent){
 	this.style=0;
 	this.mainItem= new TMenuItem(this.name+'_item0', 0, '', this);
 	this.Paint=function(){
-		//отрисовываем горизонтально пункты главного меню
+		//РѕС‚СЂРёСЃРѕРІС‹РІР°РµРј РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕ РїСѓРЅРєС‚С‹ РіР»Р°РІРЅРѕРіРѕ РјРµРЅСЋ
 		switch(this.style){
 			case 0:
 				var s=this.mainItem.ChildsPaint();

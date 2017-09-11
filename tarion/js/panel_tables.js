@@ -1,15 +1,15 @@
 function TPanelTables(name,hname,context){
 	this.type='TPanelTables';
-	this.title='Таблицы';
+	this.title='РўР°Р±Р»РёС†С‹';
 	this.name=name;
 	this.hname=hname;
 	this.mouseDX=0;
 	this.mouseDY=0;
 	this.enable = true;
 	this.open = false;
-	this.context=context;//на каком контексте лежит
-	this.style=0;//числовой указатель стиля
-	this.color=0;//числовой указатель цвета фона 0-белый
+	this.context=context;//РЅР° РєР°РєРѕРј РєРѕРЅС‚РµРєСЃС‚Рµ Р»РµР¶РёС‚
+	this.style=0;//С‡РёСЃР»РѕРІРѕР№ СѓРєР°Р·Р°С‚РµР»СЊ СЃС‚РёР»СЏ
+	this.color=0;//С‡РёСЃР»РѕРІРѕР№ СѓРєР°Р·Р°С‚РµР»СЊ С†РІРµС‚Р° С„РѕРЅР° 0-Р±РµР»С‹Р№
 	this.left=150;
 	this.top=30;
 	this.width=600;
@@ -18,12 +18,12 @@ function TPanelTables(name,hname,context){
 	this.dbtable = new TDBTables(this.name+'.dbtable', this.hname+'_dbtable', this.context);
 	
 	this.urlC=function(){
-		//возвращает переменную для ссылки
+		//РІРѕР·РІСЂР°С‰Р°РµС‚ РїРµСЂРµРјРµРЅРЅСѓСЋ РґР»СЏ СЃСЃС‹Р»РєРё
 		return this.name + '={"type":"' + this.type + '","open":"' + this.open + '","send":"SendQuest"}';
 	}
 		
 	this.Paint=function(){
-		//назначить цвет фона
+		//РЅР°Р·РЅР°С‡РёС‚СЊ С†РІРµС‚ С„РѕРЅР°
 		var bgk=this.color;
 		switch(this.color){
 			case 0:
@@ -36,7 +36,7 @@ function TPanelTables(name,hname,context){
 		this.dbtable.height=this.height-45;
 		this.dbtable.parent=this;
 		
-		//собственно панель
+		//СЃРѕР±СЃС‚РІРµРЅРЅРѕ РїР°РЅРµР»СЊ
 		switch(this.style){
 			case 0://<div style='width:100%;height:100%;overflow:scroll'>
 				var s="<table id='" + this.hname + "' style='width:" + this.width + "px;height:" + this.height + "px;background-color:#ffffcc;border:1px solid #000000;position:absolute;left:" + this.left + ";top:" + this.top + ";z-index:100' onmouseover='" + this.context.name + ".currentobject=" + this.name + ";'><tr bgcolor='#cccccc'><td>" + this.title + "</td><td align='right' height=10><img src='" + this.context.images_path + "close.gif' onmousedown='" + this.context.name + ".Opened(" + this.name + ", false);'>";
@@ -44,19 +44,19 @@ function TPanelTables(name,hname,context){
 
 				s+="</td></tr><tr><td valign=top colspan=2>";
 				
-				//нарисовать дерево таблиц/полей
-				s+="<input type='button' value='Сохранить' title='Сохранить изменения' onclick='"+this.name+".saveTables();'>";
-				s+="<input type='button' value='Отменить изменения' title='Отменить изменения' onclick='"+this.name+".SendQuest();'>";
-				s+="<input type='button' value='Импорт' title='Импортировать в проект таблицы из базы данных' onclick='"+this.name+".importTable()'>";
+				//РЅР°СЂРёСЃРѕРІР°С‚СЊ РґРµСЂРµРІРѕ С‚Р°Р±Р»РёС†/РїРѕР»РµР№
+				s+="<input type='button' value='РЎРѕС…СЂР°РЅРёС‚СЊ' title='РЎРѕС…СЂР°РЅРёС‚СЊ РёР·РјРµРЅРµРЅРёСЏ' onclick='"+this.name+".saveTables();'>";
+				s+="<input type='button' value='РћС‚РјРµРЅРёС‚СЊ РёР·РјРµРЅРµРЅРёСЏ' title='РћС‚РјРµРЅРёС‚СЊ РёР·РјРµРЅРµРЅРёСЏ' onclick='"+this.name+".SendQuest();'>";
+				s+="<input type='button' value='РРјРїРѕСЂС‚' title='РРјРїРѕСЂС‚РёСЂРѕРІР°С‚СЊ РІ РїСЂРѕРµРєС‚ С‚Р°Р±Р»РёС†С‹ РёР· Р±Р°Р·С‹ РґР°РЅРЅС‹С…' onclick='"+this.name+".importTable()'>";
 				s+=this.dbtable.Paint();
 				s+="</table>";
 			break;
 		}
 		return s;
-	}//функция отрисовки, однако, она просто возвращает HTML! 
-	//ибо непосредственной отрисовкой занимается контекст
+	}//С„СѓРЅРєС†РёСЏ РѕС‚СЂРёСЃРѕРІРєРё, РѕРґРЅР°РєРѕ, РѕРЅР° РїСЂРѕСЃС‚Рѕ РІРѕР·РІСЂР°С‰Р°РµС‚ HTML! 
+	//РёР±Рѕ РЅРµРїРѕСЃСЂРµРґСЃС‚РІРµРЅРЅРѕР№ РѕС‚СЂРёСЃРѕРІРєРѕР№ Р·Р°РЅРёРјР°РµС‚СЃСЏ РєРѕРЅС‚РµРєСЃС‚
 	
-	this.SendQuest=function(){//послать запрос относительно листа пользователей
+	this.SendQuest=function(){//РїРѕСЃР»Р°С‚СЊ Р·Р°РїСЂРѕСЃ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ Р»РёСЃС‚Р° РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
 		var q='{"id":"Tables","mode":"get"}';
 		context.AJAXquery(q, this.name);
 	}
@@ -79,7 +79,8 @@ function TPanelTables(name,hname,context){
 	    	s+=d0+"'"+i+"'=>array('name'=>'"+this.tables[i]['name']+"', 'fields'=>array(";
 	    	d1='';
 	    	for(field in this.tables[i]['fields']){
-	    		s+=d1+"'"+field+"'=>array('type'=>'"+this.tables[i]['fields'][field]['type']+"', 'remark'=>'"+escape(this.tables[i]['fields'][field]['remark'])+"')";
+//	    		s+=d1+"'"+field+"'=>array('type'=>'"+this.tables[i]['fields'][field]['type']+"', 'remark'=>'"+escape(this.tables[i]['fields'][field]['remark'])+"')";
+	    		s+=d1+"'"+field+"'=>array('type'=>'"+this.tables[i]['fields'][field]['type']+"', 'remark'=>'"+this.tables[i]['fields'][field]['remark']+"')";
 	    		d1=',';
 	    	}
 	    	s+='))';
@@ -90,14 +91,14 @@ function TPanelTables(name,hname,context){
 	}
 
 
-	this.AJAXresult=function(json_serial){//на основании полученного JSON объекта
+	this.AJAXresult=function(json_serial){//РЅР° РѕСЃРЅРѕРІР°РЅРёРё РїРѕР»СѓС‡РµРЅРЅРѕРіРѕ JSON РѕР±СЉРµРєС‚Р°
 //alert(json_serial);
 		var json=eval(json_serial);
 		if(json['tables']){
 			this.tables=json['tables'];
 			context.Paint();
 			if(document.getElementById(this.hname+'_dbtable')!=null){
-				document.getElementById(this.hname+'_dbtable').scrollTop=this.dbtable.divScroll;//восстановить прокрутку DIV
+				document.getElementById(this.hname+'_dbtable').scrollTop=this.dbtable.divScroll;//РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РїСЂРѕРєСЂСѓС‚РєСѓ DIV
 			}
 		}
 		if(json['sendMess']=='Refresh'){

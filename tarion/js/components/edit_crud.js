@@ -1,17 +1,17 @@
 function TEditCRUD(name,hname,parent){
 	this.type='TEditCRUD';
-	this.title='Мастер таблицы';
+	this.title='РњР°СЃС‚РµСЂ С‚Р°Р±Р»РёС†С‹';
 	this.name=name;
 	this.hname=hname;
 	this.mouseDX=0;
 	this.mouseDY=0;
 	this.enable = true;
-	this.parent=parent;//родитель
-	this.style=0;//числовой указатель стиля
-	this.color=0;//числовой указатель цвета фона 0-белый
+	this.parent=parent;//СЂРѕРґРёС‚РµР»СЊ
+	this.style=0;//С‡РёСЃР»РѕРІРѕР№ СѓРєР°Р·Р°С‚РµР»СЊ СЃС‚РёР»СЏ
+	this.color=0;//С‡РёСЃР»РѕРІРѕР№ СѓРєР°Р·Р°С‚РµР»СЊ С†РІРµС‚Р° С„РѕРЅР° 0-Р±РµР»С‹Р№
 	this.element=null;
 	this.elementId=null;
-	this.tables=panelTables.tables;//костыль корявый. но иначе до массива table не достучаться :(
+	this.tables=panelTables.tables;//РєРѕСЃС‚С‹Р»СЊ РєРѕСЂСЏРІС‹Р№. РЅРѕ РёРЅР°С‡Рµ РґРѕ РјР°СЃСЃРёРІР° table РЅРµ РґРѕСЃС‚СѓС‡Р°С‚СЊСЃСЏ :(
 	
 	this.Paint=function(){
 		if(this.elementId!=null){
@@ -19,25 +19,25 @@ function TEditCRUD(name,hname,parent){
 		}
 		if(this.element!=null){
 			var s="<h4>"+this.title+"</h4>";
-			s+="Наименование : <input type=text id='"+this.hname+"_name' value='"+this.element['name']+"' style='width:100%;'><br><br>";
+			s+="РќР°РёРјРµРЅРѕРІР°РЅРёРµ : <input type=text id='"+this.hname+"_name' value='"+this.element['name']+"' style='width:100%;'><br><br>";
 			switch(this.style){
 				case 0:
-					//выбрать главную таблицу
-					s+="Шаг 1:<br><small>Выберите главную таблицу</small><br>";
+					//РІС‹Р±СЂР°С‚СЊ РіР»Р°РІРЅСѓСЋ С‚Р°Р±Р»РёС†Сѓ
+					s+="РЁР°Рі 1:<br><small>Р’С‹Р±РµСЂРёС‚Рµ РіР»Р°РІРЅСѓСЋ С‚Р°Р±Р»РёС†Сѓ</small><br>";
 					s+=this.paintSelectMainTable();
-					s+="<br><input type=button value=' Далее >>> ' onclick='"+this.name+".step1();'>";
+					s+="<br><input type=button value=' Р”Р°Р»РµРµ >>> ' onclick='"+this.name+".step1();'>";
 				break;
 				case 1:
-					//выбрать отображаемые поля, указать lookup поля, выбрать поля фильтрации
-					s+="Шаг 2:<br><small>Выберите:<br> - отображаемые поля;<br> - поля для фильтра;<br> - настройки lookup-полей</small><br>";
+					//РІС‹Р±СЂР°С‚СЊ РѕС‚РѕР±СЂР°Р¶Р°РµРјС‹Рµ РїРѕР»СЏ, СѓРєР°Р·Р°С‚СЊ lookup РїРѕР»СЏ, РІС‹Р±СЂР°С‚СЊ РїРѕР»СЏ С„РёР»СЊС‚СЂР°С†РёРё
+					s+="РЁР°Рі 2:<br><small>Р’С‹Р±РµСЂРёС‚Рµ:<br> - РѕС‚РѕР±СЂР°Р¶Р°РµРјС‹Рµ РїРѕР»СЏ;<br> - РїРѕР»СЏ РґР»СЏ С„РёР»СЊС‚СЂР°;<br> - РЅР°СЃС‚СЂРѕР№РєРё lookup-РїРѕР»РµР№</small><br>";
 					s+=this.paintSelectFLF();
-					s+="<br><input type=button value=' Далее >>> ' onclick='"+this.name+".step2();'>";
+					s+="<br><input type=button value=' Р”Р°Р»РµРµ >>> ' onclick='"+this.name+".step2();'>";
 				break;
 				case 2:
-					//утвердить результат
-					s+="Шаг 3:<br><small>Подтвердите настройки <b>Дерева</b></small><br>";
+					//СѓС‚РІРµСЂРґРёС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚
+					s+="РЁР°Рі 3:<br><small>РџРѕРґС‚РІРµСЂРґРёС‚Рµ РЅР°СЃС‚СЂРѕР№РєРё <b>Р”РµСЂРµРІР°</b></small><br>";
 					s+=this.paintConfirm();
-					s+="<br><input id='"+this.hname+"_buttonOK' type=button value=' ОК ' onclick='"+this.name+".step3();'>";
+					s+="<br><input id='"+this.hname+"_buttonOK' type=button value=' РћРљ ' onclick='"+this.name+".step3();'>";
 				break;
 			}
 			return s;
@@ -56,9 +56,9 @@ function TEditCRUD(name,hname,parent){
 		}
 		s+="</select><br>";
 		
-		//проверим кто у данного пункта в потомках
-		s+="<table cellspacing=0 cellpadding=0><tr bgcolor='#cccccc'><td colspan=3>Потомки данного элемента<br><small>Потомками элемента типа <b>Таблицца</b> могут быть:<br> - один элемент типа <b>\"Таблица\"</b>;<br> - или один элемент типа <b>\"Дерево\"</b>;</small></td></tr>";
-		s+="<tr bgcolor='#cccccc'><td>Наименование</td><td>Тип</td><td></td></tr>";
+		//РїСЂРѕРІРµСЂРёРј РєС‚Рѕ Сѓ РґР°РЅРЅРѕРіРѕ РїСѓРЅРєС‚Р° РІ РїРѕС‚РѕРјРєР°С…
+		s+="<table cellspacing=0 cellpadding=0><tr bgcolor='#cccccc'><td colspan=3>РџРѕС‚РѕРјРєРё РґР°РЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°<br><small>РџРѕС‚РѕРјРєР°РјРё СЌР»РµРјРµРЅС‚Р° С‚РёРїР° <b>РўР°Р±Р»РёС†С†Р°</b> РјРѕРіСѓС‚ Р±С‹С‚СЊ:<br> - РѕРґРёРЅ СЌР»РµРјРµРЅС‚ С‚РёРїР° <b>\"РўР°Р±Р»РёС†Р°\"</b>;<br> - РёР»Рё РѕРґРёРЅ СЌР»РµРјРµРЅС‚ С‚РёРїР° <b>\"Р”РµСЂРµРІРѕ\"</b>;</small></td></tr>";
+		s+="<tr bgcolor='#cccccc'><td>РќР°РёРјРµРЅРѕРІР°РЅРёРµ</td><td>РўРёРї</td><td></td></tr>";
 		var j, flag;
 		var cntCRUD=0;
 		var cntTreeCRUD=0;
@@ -70,7 +70,7 @@ function TEditCRUD(name,hname,parent){
 				s+='</td><td>'+this.nameOfType(this.parent.bo[i]['type'])+'</td><td>';
 				if(this.parent.bo[i]['type']=='CRUD'){cntCRUD++;}
 				if(this.parent.bo[i]['type']=='TreeCRUD'){cntTreeCRUD++;}
-				//проверить есть ли у данного элемента потомки, если нет, то показать иконку "удалить"
+				//РїСЂРѕРІРµСЂРёС‚СЊ РµСЃС‚СЊ Р»Рё Сѓ РґР°РЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РїРѕС‚РѕРјРєРё, РµСЃР»Рё РЅРµС‚, С‚Рѕ РїРѕРєР°Р·Р°С‚СЊ РёРєРѕРЅРєСѓ "СѓРґР°Р»РёС‚СЊ"
 				flag=true;
 				for(j in this.parent.bo){
 					if(this.parent.bo[j]['parent']==i){
@@ -78,13 +78,13 @@ function TEditCRUD(name,hname,parent){
 					}
 				}
 				if(flag){
-					s+="<img src='images/del.jpg' width=12px title='Удалить элемент' onclick='"+this.name+".deleteElement("+i+");'>";
+					s+="<img src='images/del.jpg' width=12px title='РЈРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚' onclick='"+this.name+".deleteElement("+i+");'>";
 				}
 				s+='</td></tr>';
 				if(bcol=='cccccc'){bcol='ffffff';}else{bcol='cccccc';}
 			}
 		}
-		//добавить элемент
+		//РґРѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚
 		s+="<tr><td colspan=3>"+this.makeAddElement(cntCRUD,cntTreeCRUD)+"</td></tr>";
 		s+="</table>";
 		//alert(s);
@@ -96,10 +96,10 @@ function TEditCRUD(name,hname,parent){
 	this.makeAddElement=function(cntCRUD,cntTreeCRUD){
 		s='';
 		if(cntCRUD==0 && cntTreeCRUD==0){
-			s+="Добавить элемент типа <select id="+this.hname+"_addElem>";
-			s+="<option value='CRUD'>Таблица</option>";
-			s+="<option value='TreeCRUD'>Дерево</option>";
-			s+="</select>&nbsp;<img src='images/new.jpg' width=12px title='Создать элемент - потомок' onclick='"+this.name+".newElement();'>";
+			s+="Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚ С‚РёРїР° <select id="+this.hname+"_addElem>";
+			s+="<option value='CRUD'>РўР°Р±Р»РёС†Р°</option>";
+			s+="<option value='TreeCRUD'>Р”РµСЂРµРІРѕ</option>";
+			s+="</select>&nbsp;<img src='images/new.jpg' width=12px title='РЎРѕР·РґР°С‚СЊ СЌР»РµРјРµРЅС‚ - РїРѕС‚РѕРјРѕРє' onclick='"+this.name+".newElement();'>";
 		}
 		return s;
 	}
@@ -111,13 +111,13 @@ function TEditCRUD(name,hname,parent){
 	this.nameOfType=function(type){
 		switch(type){
 			case 'menu':
-				return 'Пункт меню';
+				return 'РџСѓРЅРєС‚ РјРµРЅСЋ';
 			break;
 			case 'CRUD':
-				return 'Таблица';
+				return 'РўР°Р±Р»РёС†Р°';
 			break;
 			case 'TreeCRUD':
-				return 'Дерево';
+				return 'Р”РµСЂРµРІРѕ';
 			break;
 		}
 	}
@@ -138,7 +138,7 @@ function TEditCRUD(name,hname,parent){
 			}
 		}
 		var s=this.tables[this.element['content']['mainTable']]['name']+"<br><table border=1>";
-		s+="<tr><td>Поле</td><td>Отображать</td><td>LookUp</td><td>Фильтр</td></tr>";
+		s+="<tr><td>РџРѕР»Рµ</td><td>РћС‚РѕР±СЂР°Р¶Р°С‚СЊ</td><td>LookUp</td><td>Р¤РёР»СЊС‚СЂ</td></tr>";
 		s+="<tr><td>ID</td><td><input type=checkbox id='"+this.hname+"_show_ID'";
 		if(this.element['content']['view']['ID']['show']){s+=" checked";}
 		s+="></td>";
@@ -163,7 +163,7 @@ function TEditCRUD(name,hname,parent){
 		s+="></td></tr>";
 		}
 		s+="</table>";
-		//проверяем, есть ли потомок
+		//РїСЂРѕРІРµСЂСЏРµРј, РµСЃС‚СЊ Р»Рё РїРѕС‚РѕРјРѕРє
 		var childI=-1;
 		for(var i in this.parent.bo){
 			if(this.parent.bo[i]['parent']==this.elementId){
@@ -171,19 +171,19 @@ function TEditCRUD(name,hname,parent){
 			}
 		}
 		if(childI!=-1){
-			//Выбор фильтра для следующей вьюхи
-			s+="Свяжите поля данного и наследного просмотрщика:";
+			//Р’С‹Р±РѕСЂ С„РёР»СЊС‚СЂР° РґР»СЏ СЃР»РµРґСѓСЋС‰РµР№ РІСЊСЋС…Рё
+			s+="РЎРІСЏР¶РёС‚Рµ РїРѕР»СЏ РґР°РЅРЅРѕРіРѕ Рё РЅР°СЃР»РµРґРЅРѕРіРѕ РїСЂРѕСЃРјРѕС‚СЂС‰РёРєР°:";
 			s+="<table><tr><td>";
-			//для данной вьюхи таблица
+			//РґР»СЏ РґР°РЅРЅРѕР№ РІСЊСЋС…Рё С‚Р°Р±Р»РёС†Р°
 			s+=this.tables[this.element['content']['mainTable']]['name']+'.';
 			s+=this.lookUpTablesField( this.tables[this.element['content']['mainTable']], this.element['content']['thistable'], 'thistable');
 			s+="</td><td>=</td><td>";
-			//для наследной вьюхи таблица
+			//РґР»СЏ РЅР°СЃР»РµРґРЅРѕР№ РІСЊСЋС…Рё С‚Р°Р±Р»РёС†Р°
 			if(this.tables[this.parent.bo[childI]['content']['mainTable']]!=null){
 				s+=this.tables[this.parent.bo[childI]['content']['mainTable']]['name']+'.';
 				s+=this.lookUpTablesField( this.tables[this.parent.bo[childI]['content']['mainTable']], this.element['content']['childtable'], 'childtable');
 			}else{
-				s+=' Таблицу потомка не выбрана ';
+				s+=' РўР°Р±Р»РёС†Сѓ РїРѕС‚РѕРјРєР° РЅРµ РІС‹Р±СЂР°РЅР° ';
 			}
 			s+="</td></tr></table>";
 		}
@@ -191,7 +191,7 @@ function TEditCRUD(name,hname,parent){
 	}
 	this.paintConfirm=function(){
 		var s=this.tables[this.element['content']['mainTable']]['name']+"<br><table border=1>";
-		s+="<tr><td>Поле</td><td>Отображать</td><td>LookUp</td><td>Фильтр</td></tr>";
+		s+="<tr><td>РџРѕР»Рµ</td><td>РћС‚РѕР±СЂР°Р¶Р°С‚СЊ</td><td>LookUp</td><td>Р¤РёР»СЊС‚СЂ</td></tr>";
 		s+="<tr><td>ID</td><td>";
 		if(this.element['content']['view']['ID']['show']){s+="<img src='images/flag.gif'>";}else{s+="&nbsp;";}
 		s+="</td>";
@@ -217,7 +217,7 @@ function TEditCRUD(name,hname,parent){
 		s+="</td></tr>";
 		}
 		s+="</table>";
-		//проверяем, есть ли потомок
+		//РїСЂРѕРІРµСЂСЏРµРј, РµСЃС‚СЊ Р»Рё РїРѕС‚РѕРјРѕРє
 		var childI=-1;
 		for(var i in this.parent.bo){
 			if(this.parent.bo[i]['parent']==this.elementId){
@@ -225,22 +225,22 @@ function TEditCRUD(name,hname,parent){
 			}
 		}
 		if(childI!=-1 && this.element['content']['thistable']!=-1 && this.element['content']['childtable']!=-1){
-			//Выбор фильтра для следующей вьюхи
-			s+="Связь данного и наследного просмотрщика:";
+			//Р’С‹Р±РѕСЂ С„РёР»СЊС‚СЂР° РґР»СЏ СЃР»РµРґСѓСЋС‰РµР№ РІСЊСЋС…Рё
+			s+="РЎРІСЏР·СЊ РґР°РЅРЅРѕРіРѕ Рё РЅР°СЃР»РµРґРЅРѕРіРѕ РїСЂРѕСЃРјРѕС‚СЂС‰РёРєР°:";
 			s+="<table><tr><td>";
-			//для данной вьюхи таблица
+			//РґР»СЏ РґР°РЅРЅРѕР№ РІСЊСЋС…Рё С‚Р°Р±Р»РёС†Р°
 			s+=this.tables[this.element['content']['mainTable']]['name']+'.';
 			s+=this.element['content']['thistable'];
 			s+="</td><td>=</td><td>";
-			//для наследной вьюхи таблица
+			//РґР»СЏ РЅР°СЃР»РµРґРЅРѕР№ РІСЊСЋС…Рё С‚Р°Р±Р»РёС†Р°
 			if(this.tables[this.parent.bo[childI]['content']['mainTable']]!=null){
 				s+=this.tables[this.parent.bo[childI]['content']['mainTable']]['name']+'.';
 				s+=this.element['content']['childtable'];
 			}else{
-				s+=' Таблицу потомка не выбрана ';
+				s+=' РўР°Р±Р»РёС†Сѓ РїРѕС‚РѕРјРєР° РЅРµ РІС‹Р±СЂР°РЅР° ';
 			}
 			/*
-			//для наследной вьюхи таблица
+			//РґР»СЏ РЅР°СЃР»РµРґРЅРѕР№ РІСЊСЋС…Рё С‚Р°Р±Р»РёС†Р°
 			s+=this.tables[this.parent.bo[childI]['content']['mainTable']]['name']+'.';
 			s+=this.element['content']['childtable'];
 			*/
@@ -274,7 +274,7 @@ function TEditCRUD(name,hname,parent){
 			}
 			this.element['content']['view'][field]['filter']=document.getElementById(this.hname+'_filter_'+field).checked;
 		}
-		//связь со следующим
+		//СЃРІСЏР·СЊ СЃРѕ СЃР»РµРґСѓСЋС‰РёРј
 		var thistable=document.getElementById(this.hname+'_thistable');
 		var childtable=document.getElementById(this.hname+'_childtable');
 		if(thistable!=null && childtable!=null){

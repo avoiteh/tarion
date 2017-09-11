@@ -1,29 +1,29 @@
-function TContext(name,hname){//главный класс приложения
+function TContext(name,hname){//РіР»Р°РІРЅС‹Р№ РєР»Р°СЃСЃ РїСЂРёР»РѕР¶РµРЅРёСЏ
 	this.name=name;
 	this.hname=hname;
-	this.AJAX_URL = 'ajax.php';//полный URL для AJAX-запросов
+	this.AJAX_URL = 'ajax.php';//РїРѕР»РЅС‹Р№ URL РґР»СЏ AJAX-Р·Р°РїСЂРѕСЃРѕРІ
 	this.images_path='images/';
 	this.navigator=navigator.appName;
 	
-	//данные текущего сеанса
-	this.user = '';//обращение к пользователю
-	this.user_id= 0;//id пользователя
-	this.authorize=false;//флаг авторизации
-	this.title = 'Добро пожаловать';//подставляемая при репаинте шапка
+	//РґР°РЅРЅС‹Рµ С‚РµРєСѓС‰РµРіРѕ СЃРµР°РЅСЃР°
+	this.user = '';//РѕР±СЂР°С‰РµРЅРёРµ Рє РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ
+	this.user_id= 0;//id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	this.authorize=false;//С„Р»Р°Рі Р°РІС‚РѕСЂРёР·Р°С†РёРё
+	this.title = 'Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ';//РїРѕРґСЃС‚Р°РІР»СЏРµРјР°СЏ РїСЂРё СЂРµРїР°РёРЅС‚Рµ С€Р°РїРєР°
 	
-	//визуальные параметры
+	//РІРёР·СѓР°Р»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹
 	this.width=document.body.clientWidth;
 	this.height=document.body.clientHeight;
 	this.mouseX=0;
 	this.mouseY=0;
 	this.mousedown=false;
-	this.container = document.getElementById(hname);//объект контейнера
-	this.elements = new Array;//хранит объекты контекста
-	this.currentobject=null;//выбранный текущий объект
+	this.container = document.getElementById(hname);//РѕР±СЉРµРєС‚ РєРѕРЅС‚РµР№РЅРµСЂР°
+	this.elements = new Array;//С…СЂР°РЅРёС‚ РѕР±СЉРµРєС‚С‹ РєРѕРЅС‚РµРєСЃС‚Р°
+	this.currentobject=null;//РІС‹Р±СЂР°РЅРЅС‹Р№ С‚РµРєСѓС‰РёР№ РѕР±СЉРµРєС‚
 	
-	//ресурсные поля и методы
-	this.events = new Array;//все события храним здесь
-	//как создать общее событие?
+	//СЂРµСЃСѓСЂСЃРЅС‹Рµ РїРѕР»СЏ Рё РјРµС‚РѕРґС‹
+	this.events = new Array;//РІСЃРµ СЃРѕР±С‹С‚РёСЏ С…СЂР°РЅРёРј Р·РґРµСЃСЊ
+	//РєР°Рє СЃРѕР·РґР°С‚СЊ РѕР±С‰РµРµ СЃРѕР±С‹С‚РёРµ?
 	this.AddEvent=function(name){
 		if(this.events[name]==null){
 			this.events[name]= new TResourceEvent();
@@ -32,7 +32,7 @@ function TContext(name,hname){//главный класс приложения
 			return false;
 		}
 	}
-	//как подключиться к сработавшему событию?
+	//РєР°Рє РїРѕРґРєР»СЋС‡РёС‚СЊСЃСЏ Рє СЃСЂР°Р±РѕС‚Р°РІС€РµРјСѓ СЃРѕР±С‹С‚РёСЋ?
 	this.AddReaction=function(name, owner){
 		if(this.events[name]!=null){
 			this.events[name].subscribers[this.events[name].subscribers.length]=owner;
@@ -41,7 +41,7 @@ function TContext(name,hname){//главный класс приложения
 			return false;
 		}
 	}
-	//произошло событие, как отреагировать?
+	//РїСЂРѕРёР·РѕС€Р»Рѕ СЃРѕР±С‹С‚РёРµ, РєР°Рє РѕС‚СЂРµР°РіРёСЂРѕРІР°С‚СЊ?
 	this.EnableEvent=function(name, message){
 		var fname;
 		for(var id in this.events[name].subscribers){
@@ -81,9 +81,9 @@ function TContext(name,hname){//главный класс приложения
 		main.mousedown=true;
 	}
 	
-	//специально для создания объектов
+	//СЃРїРµС†РёР°Р»СЊРЅРѕ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РѕР±СЉРµРєС‚РѕРІ
 	this.createObject=function(tip, name, hname){
-		//прверить, существует ли такой объект уже в массиве elements
+		//РїСЂРІРµСЂРёС‚СЊ, СЃСѓС‰РµСЃС‚РІСѓРµС‚ Р»Рё С‚Р°РєРѕР№ РѕР±СЉРµРєС‚ СѓР¶Рµ РІ РјР°СЃСЃРёРІРµ elements
 		var flen=false;
 		for(var id in this.elements){
 			if(this.elements[id].name==name){
@@ -97,22 +97,22 @@ function TContext(name,hname){//главный класс приложения
 				return(true);
 		}else{return false;}
 	}
-	//освобождение объектов
+	//РѕСЃРІРѕР±РѕР¶РґРµРЅРёРµ РѕР±СЉРµРєС‚РѕРІ
 	this.freeObject=function(obj){
 		for(var id in this.elements){
 			if(obj.name==this.elements[id].name){
-				//если такой объект найден в списке, то удаляем его
+				//РµСЃР»Рё С‚Р°РєРѕР№ РѕР±СЉРµРєС‚ РЅР°Р№РґРµРЅ РІ СЃРїРёСЃРєРµ, С‚Рѕ СѓРґР°Р»СЏРµРј РµРіРѕ
 				this.elements[id]=null;
 				this.elements.splice(id,1);
 			}
 		}
 		this.Paint();
 	}
-	//освобождение элемента по имени
+	//РѕСЃРІРѕР±РѕР¶РґРµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РїРѕ РёРјРµРЅРё
 	this.freeObjectByName=function(name){
 		for(var id in this.elements){
 			if(name==this.elements[id].name){
-				//если такой объект найден в списке, то удаляем его
+				//РµСЃР»Рё С‚Р°РєРѕР№ РѕР±СЉРµРєС‚ РЅР°Р№РґРµРЅ РІ СЃРїРёСЃРєРµ, С‚Рѕ СѓРґР°Р»СЏРµРј РµРіРѕ
 				this.elements[id]=null;
 				this.elements.splice(id,1);
 			}
@@ -120,47 +120,47 @@ function TContext(name,hname){//главный класс приложения
 		this.Paint();
 	}
 	
-	this.UserAuthorize=function(auth, json){//произошла удачная авторизация/разавторизация
+	this.UserAuthorize=function(auth, json){//РїСЂРѕРёР·РѕС€Р»Р° СѓРґР°С‡РЅР°СЏ Р°РІС‚РѕСЂРёР·Р°С†РёСЏ/СЂР°Р·Р°РІС‚РѕСЂРёР·Р°С†РёСЏ
 		this.authorize=auth;
 		this.user=json['nicname'];
 		this.user_id=json['user_id'];
 		if(this.authorize){
-			//теперь создаём панели перечисленные в списке json['resources']
-			//создать панель Kabinet
+			//С‚РµРїРµСЂСЊ СЃРѕР·РґР°С‘Рј РїР°РЅРµР»Рё РїРµСЂРµС‡РёСЃР»РµРЅРЅС‹Рµ РІ СЃРїРёСЃРєРµ json['resources']
+			//СЃРѕР·РґР°С‚СЊ РїР°РЅРµР»СЊ Kabinet
 			if(json['resources']['panelKabinet']){
 			if(this.createObject('TPanelKabinet','panelKabinet','HpanelKabinet')){
 				this.elements[this.elements.length]=panelKabinet;
-				panelKabinet.title='Личные данные';
+				panelKabinet.title='Р›РёС‡РЅС‹Рµ РґР°РЅРЅС‹Рµ';
 				panelKabinet.SendQuest();
 			}}
-			//создать панель типы объектов isee
+			//СЃРѕР·РґР°С‚СЊ РїР°РЅРµР»СЊ С‚РёРїС‹ РѕР±СЉРµРєС‚РѕРІ isee
 			if(json['resources']['panelIseeType']){
 			if(this.createObject('TPanelIseeType','panelIseeType','HpanelIseeType')){
 				this.elements[this.elements.length]=panelIseeType;
-				panelIseeType.title='Типы объектов';
+				panelIseeType.title='РўРёРїС‹ РѕР±СЉРµРєС‚РѕРІ';
 				panelIseeType.askContent();
 			}}
-			//создать панель модерации объектов isee
+			//СЃРѕР·РґР°С‚СЊ РїР°РЅРµР»СЊ РјРѕРґРµСЂР°С†РёРё РѕР±СЉРµРєС‚РѕРІ isee
 			if(json['resources']['panelIseeModerate']){
 			if(this.createObject('TPanelIseeModerate','panelIseeModerate','HpanelIseeModerate')){
 				this.elements[this.elements.length]=panelIseeModerate;
 				panelIseeModerate.SendQuest();
 			}}
 		}else{
-			//создать панель Kabinet
+			//СЃРѕР·РґР°С‚СЊ РїР°РЅРµР»СЊ Kabinet
 			this.freeObject(panelKabinet);
 			this.freeObject(panelIseeType);
 		}
 		this.Paint();	
 	}
-	//мегаотрисовка всего
+	//РјРµРіР°РѕС‚СЂРёСЃРѕРІРєР° РІСЃРµРіРѕ
 	this.Paint = function(){
 		var s='';
-		//отрисовываем элементы
+		//РѕС‚СЂРёСЃРѕРІС‹РІР°РµРј СЌР»РµРјРµРЅС‚С‹
 		for(var i in this.elements){
 			if(this.elements[i].enable && this.elements[i].open){s+=this.elements[i].Paint();}
 		}
-		//отрисовываем BarPanels
+		//РѕС‚СЂРёСЃРѕРІС‹РІР°РµРј BarPanels
 		var pb="<table id='"+this.hname+"_bar_panels' style='width:"+this.width+"px;height:25px;background-color:#aaaaaa;border:1px solid #000000;position:absolute;left:0;top:0;z-index:11' align='right'><tr><td>";
 		for(var id in this.elements){
 			if(!this.elements[id].open){
@@ -170,69 +170,70 @@ function TContext(name,hname){//главный класс приложения
 		pb+="</td></tr></table>";
 		pb=pb+s;
 		this.container.innerHTML=pb;
-	}//переотрисовывает элементы контекста
+	}//РїРµСЂРµРѕС‚СЂРёСЃРѕРІС‹РІР°РµС‚ СЌР»РµРјРµРЅС‚С‹ РєРѕРЅС‚РµРєСЃС‚Р°
 	
 	this.Opened=function(element, open){
 		element.open=open;
 		this.Paint();
 	}
 	
-	//системные методы
-	//метод для подключения к аяксу
-	//все запросы приходят сюда и ставятся в очередь
-	//запросы изымаются из очереди и производятся
-	//если пришёл новый запрос, а производится, то в очередь
-	//когда запрос выполнился - производится очищается
-	this.AJAXqueue = new Array;//собсно очередь
-	this.AJAXquery=function(query, name){//query - собственно запрос, name - имя объекта, который запросил
-		//поставить запрос в очередь
+	//СЃРёСЃС‚РµРјРЅС‹Рµ РјРµС‚РѕРґС‹
+	//РјРµС‚РѕРґ РґР»СЏ РїРѕРґРєР»СЋС‡РµРЅРёСЏ Рє Р°СЏРєСЃСѓ
+	//РІСЃРµ Р·Р°РїСЂРѕСЃС‹ РїСЂРёС…РѕРґСЏС‚ СЃСЋРґР° Рё СЃС‚Р°РІСЏС‚СЃСЏ РІ РѕС‡РµСЂРµРґСЊ
+	//Р·Р°РїСЂРѕСЃС‹ РёР·С‹РјР°СЋС‚СЃСЏ РёР· РѕС‡РµСЂРµРґРё Рё РїСЂРѕРёР·РІРѕРґСЏС‚СЃСЏ
+	//РµСЃР»Рё РїСЂРёС€С‘Р» РЅРѕРІС‹Р№ Р·Р°РїСЂРѕСЃ, Р° РїСЂРѕРёР·РІРѕРґРёС‚СЃСЏ, С‚Рѕ РІ РѕС‡РµСЂРµРґСЊ
+	//РєРѕРіРґР° Р·Р°РїСЂРѕСЃ РІС‹РїРѕР»РЅРёР»СЃСЏ - РїСЂРѕРёР·РІРѕРґРёС‚СЃСЏ РѕС‡РёС‰Р°РµС‚СЃСЏ
+	this.AJAXqueue = new Array;//СЃРѕР±СЃРЅРѕ РѕС‡РµСЂРµРґСЊ
+	this.AJAXquery=function(query, name){//query - СЃРѕР±СЃС‚РІРµРЅРЅРѕ Р·Р°РїСЂРѕСЃ, name - РёРјСЏ РѕР±СЉРµРєС‚Р°, РєРѕС‚РѕСЂС‹Р№ Р·Р°РїСЂРѕСЃРёР»
+		//РїРѕСЃС‚Р°РІРёС‚СЊ Р·Р°РїСЂРѕСЃ РІ РѕС‡РµСЂРµРґСЊ
 		var c=this.AJAXqueue.length;
 		this.AJAXqueue[c] = new Array(query, name);
 		if(gloAJAXreq==null && this.AJAXqueue.length>0){
-			//выполнить запрос
-//alert('url='+this.AJAX_URL+', q='+this.AJAXqueue[0][0]);
+			//РІС‹РїРѕР»РЅРёС‚СЊ Р·Р°РїСЂРѕСЃ
+console.log('url='+this.AJAX_URL+', q='+this.AJAXqueue[0][0]);
 			GloAJAXquery(this.AJAX_URL, this.AJAXqueue[0][0]); //post - version
 		}
 	}
 	
 	/* form-version 
-	this.AJAXresult=function(answer){//обработчик данных возвращаемых от формы
+	this.AJAXresult=function(answer){//РѕР±СЂР°Р±РѕС‚С‡РёРє РґР°РЅРЅС‹С… РІРѕР·РІСЂР°С‰Р°РµРјС‹С… РѕС‚ С„РѕСЂРјС‹
 		var obj = eval(main.AJAXqueue[0][1]+';');
-		//выбрать верхний элемент очереди, отдать ему данные, удалить его из очереди
+		//РІС‹Р±СЂР°С‚СЊ РІРµСЂС…РЅРёР№ СЌР»РµРјРµРЅС‚ РѕС‡РµСЂРµРґРё, РѕС‚РґР°С‚СЊ РµРјСѓ РґР°РЅРЅС‹Рµ, СѓРґР°Р»РёС‚СЊ РµРіРѕ РёР· РѕС‡РµСЂРµРґРё
 		var obj = eval(main.AJAXqueue[0][1]+';');
 		main.AJAXqueue.splice(0,1);
-//alert(main.AJAXqueue[0]+"\n\n\n"+main.AJAXqueue[1]);
-		//если очередь не пуста - то выполнить запрос
+console.log(main.AJAXqueue[0]+"\n\n\n"+main.AJAXqueue[1]);
+		//РµСЃР»Рё РѕС‡РµСЂРµРґСЊ РЅРµ РїСѓСЃС‚Р° - С‚Рѕ РІС‹РїРѕР»РЅРёС‚СЊ Р·Р°РїСЂРѕСЃ
 		//gloAJAXreq=null;
 		if(main.AJAXqueue.length>0){
 			GloAJAXquery(main.AJAXqueue[0][0]);
 		}
-		//отдать данные
+		//РѕС‚РґР°С‚СЊ РґР°РЅРЅС‹Рµ
 		obj.AJAXresult(answer);
 	}
 	*/
 	
 	
-	this.AJAXresult=function(){//обработчик возвращённых данных// get - version
-		//получить объект
+	this.AJAXresult=function(){//РѕР±СЂР°Р±РѕС‚С‡РёРє РІРѕР·РІСЂР°С‰С‘РЅРЅС‹С… РґР°РЅРЅС‹С…// get - version
+		//РїРѕР»СѓС‡РёС‚СЊ РѕР±СЉРµРєС‚
 	if(gloAJAXreq!=null){
 		if (gloAJAXreq.readyState == 4) {
-   		    // для статуса "OK"
+   		    // РґР»СЏ СЃС‚Р°С‚СѓСЃР° "OK"
+console.log(gloAJAXreq.status);
    		    if (gloAJAXreq.status == 200) {
-   		    	//спрятать часики
+   		    	//СЃРїСЂСЏС‚Р°С‚СЊ С‡Р°СЃРёРєРё
    		    	var img=document.getElementById('ajax_clock');
 				img.style.display='none';
-   		        // здесь идут всякие штуки с полученным ответом
+   		        // Р·РґРµСЃСЊ РёРґСѓС‚ РІСЃСЏРєРёРµ С€С‚СѓРєРё СЃ РїРѕР»СѓС‡РµРЅРЅС‹Рј РѕС‚РІРµС‚РѕРј
    		        var gettingText = gloAJAXreq.responseText;
-   		        //выбрать верхний элемент очереди, отдать ему данные, удалить его из очереди
+   		        //РІС‹Р±СЂР°С‚СЊ РІРµСЂС…РЅРёР№ СЌР»РµРјРµРЅС‚ РѕС‡РµСЂРµРґРё, РѕС‚РґР°С‚СЊ РµРјСѓ РґР°РЅРЅС‹Рµ, СѓРґР°Р»РёС‚СЊ РµРіРѕ РёР· РѕС‡РµСЂРµРґРё
    		        var obj = eval(main.AJAXqueue[0][1]+';');
 				main.AJAXqueue.splice(0,1);
-				//если очередь не пуста - то выполнить запрос
+				//РµСЃР»Рё РѕС‡РµСЂРµРґСЊ РЅРµ РїСѓСЃС‚Р° - С‚Рѕ РІС‹РїРѕР»РЅРёС‚СЊ Р·Р°РїСЂРѕСЃ
 				gloAJAXreq=null;
 				if(main.AJAXqueue.length>0){
 					GloAJAXquery(main.AJAX_URL, main.AJAXqueue[0][0]); //post - version
 				}
-				//отдать данные
+				//РѕС‚РґР°С‚СЊ РґР°РЅРЅС‹Рµ
 				obj.AJAXresult(gettingText);
    		    }else{
    		    		alert('error: '+gloAJAXreq.status);//Text);
@@ -242,15 +243,15 @@ function TContext(name,hname){//главный класс приложения
 	}
 	
 		
-	//обработка всех абсолютно кликов
-	//ведём её централизованно, дабы правильно подключать всё желаемое
-	this.CliCkerCenter = function(who, mess){//who - кто сказал "клик", имя объекта; mess - чего он сказал
+	//РѕР±СЂР°Р±РѕС‚РєР° РІСЃРµС… Р°Р±СЃРѕР»СЋС‚РЅРѕ РєР»РёРєРѕРІ
+	//РІРµРґС‘Рј РµС‘ С†РµРЅС‚СЂР°Р»РёР·РѕРІР°РЅРЅРѕ, РґР°Р±С‹ РїСЂР°РІРёР»СЊРЅРѕ РїРѕРґРєР»СЋС‡Р°С‚СЊ РІСЃС‘ Р¶РµР»Р°РµРјРѕРµ
+	this.CliCkerCenter = function(who, mess){//who - РєС‚Рѕ СЃРєР°Р·Р°Р» "РєР»РёРє", РёРјСЏ РѕР±СЉРµРєС‚Р°; mess - С‡РµРіРѕ РѕРЅ СЃРєР°Р·Р°Р»
 		//alert(who+', '+mess);
 		switch(who){
 			case panelAuth.name:
-				//авторизация
-				//взять логин, пароль, переслать серверу
-				//*после отработки управление передаётся обратно объекту авторизации
+				//Р°РІС‚РѕСЂРёР·Р°С†РёСЏ
+				//РІР·СЏС‚СЊ Р»РѕРіРёРЅ, РїР°СЂРѕР»СЊ, РїРµСЂРµСЃР»Р°С‚СЊ СЃРµСЂРІРµСЂСѓ
+				//*РїРѕСЃР»Рµ РѕС‚СЂР°Р±РѕС‚РєРё СѓРїСЂР°РІР»РµРЅРёРµ РїРµСЂРµРґР°С‘С‚СЃСЏ РѕР±СЂР°С‚РЅРѕ РѕР±СЉРµРєС‚Сѓ Р°РІС‚РѕСЂРёР·Р°С†РёРё
 			break;
 			case 'mapView':
 				mapView.ontoolbuttonclick(mess);
@@ -268,8 +269,8 @@ function TContext(name,hname){//главный класс приложения
 
 //begin of TResourceEvent
 function TResourceEvent(){
-	this.subscribers = new Array;//список подписантов, здесь храним вызовы, отзывающиеся на данное событие
-									//например panel1.CallMe(message), где message - аргумент передаваемый объектом-инициатором
+	this.subscribers = new Array;//СЃРїРёСЃРѕРє РїРѕРґРїРёСЃР°РЅС‚РѕРІ, Р·РґРµСЃСЊ С…СЂР°РЅРёРј РІС‹Р·РѕРІС‹, РѕС‚Р·С‹РІР°СЋС‰РёРµСЃСЏ РЅР° РґР°РЅРЅРѕРµ СЃРѕР±С‹С‚РёРµ
+									//РЅР°РїСЂРёРјРµСЂ panel1.CallMe(message), РіРґРµ message - Р°СЂРіСѓРјРµРЅС‚ РїРµСЂРµРґР°РІР°РµРјС‹Р№ РѕР±СЉРµРєС‚РѕРј-РёРЅРёС†РёР°С‚РѕСЂРѕРј
 }
 //end of TResourceEvent
 
@@ -287,13 +288,13 @@ function GloAJAXquery(query){
 /*Post - version*/
 function GloAJAXquery(url, query){// get - version
 	var sendParam;
-   	// для Mozilla, Safari, Opera:
+   	// РґР»СЏ Mozilla, Safari, Opera:
    	if (window.XMLHttpRequest)
    	{
    	  gloAJAXreq = new XMLHttpRequest();
    	  sendParam = null;
    	}
-   	// для IE:
+   	// РґР»СЏ IE:
    	else if (window.ActiveXObject)
    	{
    	  gloAJAXreq = new ActiveXObject("Microsoft.XMLHTTP");
@@ -309,14 +310,14 @@ function GloAJAXquery(url, query){// get - version
    	  gloAJAXreq.open("post", url, true);
    	  gloAJAXreq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
    	  //alert(sendParam);
-   	  //показать часики
+   	  //РїРѕРєР°Р·Р°С‚СЊ С‡Р°СЃРёРєРё
    	  var x=Math.round(document.body.clientWidth/2-30);
 	  var y=Math.round(document.body.clientHeight/2-30);
 	  var img=document.getElementById('ajax_clock');
 	  img.style.left=x+'px';
 	  img.style.top=y+'px';
 	  img.style.display='block';
-//alert(query);
+console.log(sendParam);
    	  gloAJAXreq.send(sendParam);
    	}
 }
@@ -325,13 +326,13 @@ function GloAJAXquery(url, query){// get - version
 function GloAJAXquery(url){// get - version
 //alert(url);
 	var sendParam = '';
-   	// для Mozilla, Safari, Opera:
+   	// РґР»СЏ Mozilla, Safari, Opera:
    	if (window.XMLHttpRequest)
    	{
    	  gloAJAXreq = new XMLHttpRequest();
    	  sendParam = null;
    	}
-   	// для IE:
+   	// РґР»СЏ IE:
    	else if (window.ActiveXObject)
    	{
    	  gloAJAXreq = new ActiveXObject("Microsoft.XMLHTTP");
@@ -353,7 +354,7 @@ function Timer(){
 	this.name='';
 	this.enable=false;
 	this.Interval=1000;
-	this.ontimer='';//вызов
+	this.ontimer='';//РІС‹Р·РѕРІ
 	this.Start=function(){
 		this.enable=true;
 		this.innerontimer();
@@ -389,7 +390,8 @@ function tryConvertToJSON(obj){
 		if(typeof obj=='boolean'){
 			s=String(obj);
 		}else if(typeof obj=='string'){
-			s='"'+escape(obj)+'"';
+			//s='"'+escape(obj)+'"';
+			s='"'+obj+'"';
 		}else{
 			s='"'+obj+'"';
 		}

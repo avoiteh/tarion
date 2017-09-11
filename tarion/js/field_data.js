@@ -2,7 +2,7 @@ function TFieldData(name,hname,data){
 	this.name=name;
 	this.hname=hname;
 	this.data=data;//is array day, month, year
-	this.months= new Array('январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь');
+	this.months= new Array('СЏРЅРІР°СЂСЊ','С„РµРІСЂР°Р»СЊ','РјР°СЂС‚','Р°РїСЂРµР»СЊ','РјР°Р№','РёСЋРЅСЊ','РёСЋР»СЊ','Р°РІРіСѓСЃС‚','СЃРµРЅС‚СЏР±СЂСЊ','РѕРєС‚СЏР±СЂСЊ','РЅРѕСЏР±СЂСЊ','РґРµРєР°Р±СЂСЊ');
 	this.m_days= new Array(31,28,31,30,31,30,31,30,31,31,30,31);
 	this.style=0;
 	
@@ -26,7 +26,7 @@ function TFieldData(name,hname,data){
 		return(this.data[2]+'-'+this.data[1]+'-'+this.data[0]);
 	}
 	this.onEdit = function(){
-		//что делать если надо редактировать?
+		//С‡С‚Рѕ РґРµР»Р°С‚СЊ РµСЃР»Рё РЅР°РґРѕ СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ?
 		this.style=1;
 		main.Paint();
 	}

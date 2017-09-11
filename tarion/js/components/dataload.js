@@ -1,4 +1,4 @@
-//данный компонент предназначен для хранения данных произвольной конфигурации грузимых с сервера
+//РґР°РЅРЅС‹Р№ РєРѕРјРїРѕРЅРµРЅС‚ РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РґР°РЅРЅС‹С… РїСЂРѕРёР·РІРѕР»СЊРЅРѕР№ РєРѕРЅС„РёРіСѓСЂР°С†РёРё РіСЂСѓР·РёРјС‹С… СЃ СЃРµСЂРІРµСЂР°
 function TDataLoad(name){
 	this.name=name;
 	
@@ -7,10 +7,10 @@ function TDataLoad(name){
 	
 	this.dataQuery = '';
 	this.onLoad = null;
-	this.SendQuest=function(){//послать запрос относительно карты и объектов
+	this.SendQuest=function(){//РїРѕСЃР»Р°С‚СЊ Р·Р°РїСЂРѕСЃ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РєР°СЂС‚С‹ Рё РѕР±СЉРµРєС‚РѕРІ
 		main.AJAXquery(this.dataQuery, this.name);
 	}
-	this.AJAXresult=function(json_serial){//на основании полученного JSON объекта
+	this.AJAXresult=function(json_serial){//РЅР° РѕСЃРЅРѕРІР°РЅРёРё РїРѕР»СѓС‡РµРЅРЅРѕРіРѕ JSON РѕР±СЉРµРєС‚Р°
 		this.content=eval(json_serial);
 		if(this.flagRepaintOnLoad){
 			main.Paint();

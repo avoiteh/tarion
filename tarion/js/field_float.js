@@ -22,7 +22,7 @@ function TFieldFloat(name,hname,data){
 		return(this.data);
 	}
 	this.onEdit = function(){
-		//что делать если надо редактировать?
+		//С‡С‚Рѕ РґРµР»Р°С‚СЊ РµСЃР»Рё РЅР°РґРѕ СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ?
 		this.style=1;
 		main.Paint();
 	}

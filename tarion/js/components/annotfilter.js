@@ -13,16 +13,20 @@ function TAnnotFilter(name,hname,maincontext,parent){
 	this.height= '200';
 	this.filter=new Array;
 	
+	
+	
+	
 	this.filter['type']=new Array;
-	this.filter['type']['ÄÎÌ']=true;
-	this.filter['type']['ÊÂÀĞÒÈĞÀ']=true;
-	this.filter['type']['ÄÀ×À']=true;
-	this.filter['type']['ÀÂÒÎ ËÅÃÊÎÂÎÉ']=true;
-	this.filter['type']['ÀÂÒÎ ÃĞÓÇÎÂÎÉ']=true;
-	this.filter['type']['ÊÍÈÃÈ']=true;
-	this.filter['type']['ÌÅÄÈÖÈÍÀ']=true;
-	this.filter['type']['ÑÒĞÎÈÒÅËÜÑÒÂÎ']=true;
-	this.filter['type']['ÏÀĞÔŞÌÅĞÈß']=true;
+	
+	this.filter['type']['Ğ”ĞĞœ']=true;
+	this.filter['type']['ĞšĞ’ĞĞ Ğ¢Ğ˜Ğ Ğ']=true;
+	this.filter['type']['Ğ”ĞĞ§Ğ']=true;
+	this.filter['type']['ĞĞ’Ğ¢Ğ Ğ›Ğ•Ğ“ĞšĞĞ’ĞĞ™']=true;
+	this.filter['type']['ĞĞ’Ğ¢Ğ Ğ“Ğ Ğ£Ğ—ĞĞ’ĞĞ™']=true;
+	this.filter['type']['ĞšĞĞ˜Ğ“Ğ˜']=true;
+	this.filter['type']['ĞœĞ•Ğ”Ğ˜Ğ¦Ğ˜ĞĞ']=true;
+	this.filter['type']['Ğ¡Ğ¢Ğ ĞĞ˜Ğ¢Ğ•Ğ›Ğ¬Ğ¡Ğ¢Ğ’Ğ']=true;
+	this.filter['type']['ĞŸĞĞ Ğ¤Ğ®ĞœĞ•Ğ Ğ˜Ğ¯']=true;
 	this.filter['tradetype']=new Array;
 	this.filter['tradetype'][1]=true;
 	this.filter['tradetype'][2]=true;

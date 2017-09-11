@@ -7,9 +7,9 @@ function TPanelFO(name,hname,context){
 	this.mouseDY=0;
 	this.enable = true;
 	this.open = false;
-	this.context=context;//на каком контексте лежит
-	this.style=0;//числовой указатель стиля
-	this.color=0;//числовой указатель цвета фона 0-белый
+	this.context=context;//РЅР° РєР°РєРѕРј РєРѕРЅС‚РµРєСЃС‚Рµ Р»РµР¶РёС‚
+	this.style=0;//С‡РёСЃР»РѕРІРѕР№ СѓРєР°Р·Р°С‚РµР»СЊ СЃС‚РёР»СЏ
+	this.color=0;//С‡РёСЃР»РѕРІРѕР№ СѓРєР°Р·Р°С‚РµР»СЊ С†РІРµС‚Р° С„РѕРЅР° 0-Р±РµР»С‹Р№
 	this.left=50;
 	this.top=30;
 	this.width=900;
@@ -18,7 +18,7 @@ function TPanelFO(name,hname,context){
 	this.currentEdit=null;
 		
 	this.Paint=function(){
-		//назначить цвет фона
+		//РЅР°Р·РЅР°С‡РёС‚СЊ С†РІРµС‚ С„РѕРЅР°
 		var bgk=this.color;
 		switch(this.color){
 			case 0:
@@ -26,7 +26,7 @@ function TPanelFO(name,hname,context){
 			break;
 		}
 		
-		//собственно панель
+		//СЃРѕР±СЃС‚РІРµРЅРЅРѕ РїР°РЅРµР»СЊ
 		switch(this.style){
 			case 0://<div style='width:100%;height:100%;overflow:scroll'>
 				var s="<table id='" + this.hname + "' style='width:" + this.width + "px;height:" + this.height + "px;background-color:#ffffcc;border:1px solid #000000;position:absolute;left:" + this.left + ";top:" + this.top + ";z-index:100' onmouseover='" + this.context.name + ".currentobject=" + this.name + ";'><tr bgcolor='#cccccc'><td>" + this.title + "</td><td align='right' height=10><img src='" + this.context.images_path + "close.gif' onmousedown='" + this.context.name + ".Opened(" + this.name + ", false);'>";
@@ -35,7 +35,7 @@ function TPanelFO(name,hname,context){
 				s+="</td></tr><tr><td valign=top colspan=2>";
 				s+="<table border=1 width=100% height="+(this.height)+"px><tr><td valign=top>";
 				s+="<div style='overflow:scroll;width:100%;height:100%;font-size:12px;' class='step2'>";
-				s+="<div>Главное меню <img src='images/new.jpg' width='12px' title='Создать новый пункт меню' onclick='"+this.name+".createNewMenuLine();'></div>";
+				s+="<div>Р“Р»Р°РІРЅРѕРµ РјРµРЅСЋ <img src='images/new.jpg' width='12px' title='РЎРѕР·РґР°С‚СЊ РЅРѕРІС‹Р№ РїСѓРЅРєС‚ РјРµРЅСЋ' onclick='"+this.name+".createNewMenuLine();'></div>";
 				s+="<div style='overflow:scroll;height:450px;'>";
 				s+="<ul class='Container'>";
 				s+=this.objectTreePaint(0, 0);
@@ -46,13 +46,13 @@ function TPanelFO(name,hname,context){
 				
 				if(this.currentEdit!=null){s+="<div style='overflow:scroll;height:500px;'>"+this.currentEdit.Paint()+"</div>";}
 				s+="</td></tr></table>";
-				//нарисовать слева дерево элементов, справа панель редакторов
+				//РЅР°СЂРёСЃРѕРІР°С‚СЊ СЃР»РµРІР° РґРµСЂРµРІРѕ СЌР»РµРјРµРЅС‚РѕРІ, СЃРїСЂР°РІР° РїР°РЅРµР»СЊ СЂРµРґР°РєС‚РѕСЂРѕРІ
 				s+="</table>";
 			break;
 		}
 		return s;
-	}//функция отрисовки, однако, она просто возвращает HTML! 
-	//ибо непосредственной отрисовкой занимается контекст
+	}//С„СѓРЅРєС†РёСЏ РѕС‚СЂРёСЃРѕРІРєРё, РѕРґРЅР°РєРѕ, РѕРЅР° РїСЂРѕСЃС‚Рѕ РІРѕР·РІСЂР°С‰Р°РµС‚ HTML! 
+	//РёР±Рѕ РЅРµРїРѕСЃСЂРµРґСЃС‚РІРµРЅРЅРѕР№ РѕС‚СЂРёСЃРѕРІРєРѕР№ Р·Р°РЅРёРјР°РµС‚СЃСЏ РєРѕРЅС‚РµРєСЃС‚
 	
 	this.objectTreePaint=function(parent,level){
 		var s='';
@@ -96,7 +96,7 @@ function TPanelFO(name,hname,context){
 		this.context.Paint();
 	}
 	this.deleteElement=function(j){
-		//проверить, допустимо ли удалять?
+		//РїСЂРѕРІРµСЂРёС‚СЊ, РґРѕРїСѓСЃС‚РёРјРѕ Р»Рё СѓРґР°Р»СЏС‚СЊ?
 		var flag=true;
 		for(var i in this.bo){
 			if(this.bo[i]['parent']==j){flag=false;}
@@ -105,7 +105,7 @@ function TPanelFO(name,hname,context){
 			delete this.bo[j];
 			this.context.Paint();
 		}else{
-			alert('Нельзя удалить данный элемент, т.к. у него есть потомки!');
+			alert('РќРµР»СЊР·СЏ СѓРґР°Р»РёС‚СЊ РґР°РЅРЅС‹Р№ СЌР»РµРјРµРЅС‚, С‚.Рє. Сѓ РЅРµРіРѕ РµСЃС‚СЊ РїРѕС‚РѕРјРєРё!');
 		}
 	}
 	this.createNewMenuLine=function(){
@@ -116,7 +116,7 @@ function TPanelFO(name,hname,context){
 		for(var i in this.bo){if(i*1>n){n=i*1;}}
 		n++;
 		this.bo[n]=new Array;
-		this.bo[n]['name']='Новый элемент';
+		this.bo[n]['name']='РќРѕРІС‹Р№ СЌР»РµРјРµРЅС‚';
 		this.bo[n]['type']=type;
 		this.bo[n]['parent']=parent;
 		this.bo[n]['content']=new Array;
@@ -149,7 +149,7 @@ function TPanelFO(name,hname,context){
 		}
 	}
 	
-	this.SendQuest=function(){//послать запрос относительно листа пользователей
+	this.SendQuest=function(){//РїРѕСЃР»Р°С‚СЊ Р·Р°РїСЂРѕСЃ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ Р»РёСЃС‚Р° РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
 		var q='{"id":"FO","mode":"get"}';
 		context.AJAXquery(q, this.name);
 	}
@@ -161,7 +161,7 @@ function TPanelFO(name,hname,context){
 		context.AJAXquery(q, this.name);
 	}
 	
-	this.AJAXresult=function(json_serial){//на основании полученного JSON объекта
+	this.AJAXresult=function(json_serial){//РЅР° РѕСЃРЅРѕРІР°РЅРёРё РїРѕР»СѓС‡РµРЅРЅРѕРіРѕ JSON РѕР±СЉРµРєС‚Р°
 //alert(json_serial);
 		var json=eval(json_serial);
 //alert(json['fo']);

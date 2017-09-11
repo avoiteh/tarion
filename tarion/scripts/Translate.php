@@ -59,7 +59,7 @@ password: $CFG[dbpassword]<br>
 database: $CFG[database]";
 			}
 		}
-		$json_answer['Translate']['Mess']=iconv('cp1251','utf-8',$json_answer['Translate']['Mess']);
+//		$json_answer['Translate']['Mess']=$json_answer['Translate']['Mess'];
 	break;
 	case 'checkDir'://проверка доступности папки
 		$s=date('Y-m-d H:i:s');
@@ -81,7 +81,7 @@ database: $CFG[database]";
 			$json_answer['Translate']['Flag']='Error';
 			$json_answer['Translate']['Mess']="Ошибка доступа к корневой папке.";
 		}
-		$json_answer['Translate']['Mess']=iconv('cp1251','utf-8',$json_answer['Translate']['Mess']);
+		//$json_answer['Translate']['Mess']=iconv('cp1251','utf-8',$json_answer['Translate']['Mess']);
 	break;
 	case 'createTables'://создание таблиц
 		$json_answer['Translate']['Flag']='OK';
@@ -134,7 +134,7 @@ database: $CFG[database]";
 				$json_answer['Translate']['Mess'].=$createError."<br>";
 			}
 		}
-		$json_answer['Translate']['Mess']=iconv('cp1251','utf-8',$json_answer['Translate']['Mess']);
+		//$json_answer['Translate']['Mess']=iconv('cp1251','utf-8',$json_answer['Translate']['Mess']);
 	break;
 	case 'checkAuthDB'://проверка наличия таблицц для системы авторизации и разделения доступа
 		$tablecnt=0;
@@ -227,7 +227,7 @@ database: $CFG[database]";
 			$_SESSION['AUTH_SYSTEM']=false;
 			$json_answer['Translate']['Mess'].="Система авторизации и разделения прав доступа ВЫКЛЮЧЕНА";
 		}
-		$json_answer['Translate']['Mess']=iconv('cp1251','utf-8',$json_answer['Translate']['Mess']);
+		//$json_answer['Translate']['Mess']=iconv('cp1251','utf-8',$json_answer['Translate']['Mess']);
 	break;
 	case 'createAuth'://создание моделей, вьюх и акшинов для системы авторизации и разделения доступа
 		if($_SESSION['AUTH_SYSTEM']){
@@ -240,7 +240,7 @@ database: $CFG[database]";
 			$json_answer['Translate']['Flag']='Error';
 			$json_answer['Translate']['Mess'].="Система авторизации и разделения прав доступа ВЫКЛЮЧЕНА";
 		}
-		$json_answer['Translate']['Mess']=iconv('cp1251','utf-8',$json_answer['Translate']['Mess']);
+		//$json_answer['Translate']['Mess']=iconv('cp1251','utf-8',$json_answer['Translate']['Mess']);
 	break;
 	case 'createMenuBO'://создание вьюхи меню БО
 		copy('scripts/Prototype/bo.php', '../bo.php');
@@ -252,7 +252,7 @@ database: $CFG[database]";
 			$id_parent=array();
 			foreach ($project['back'] as $id => $module){
 				//parent, type, name
-				$name=iconv('utf-8','cp1251',$module['name']);
+				$name=$module['name'];
 				$tname=translit($name);
 				if($module['type']=='CRUD' || $module['type']=='TreeCRUD'){
 					$id_parent[$id]=array();
@@ -305,7 +305,7 @@ database: $CFG[database]";
 			mysql_query("TRUNCATE TABLE front_cross_right");
 			foreach ($project['front'] as $id => $module){
 				//parent, type, name
-				$name=iconv('utf-8','cp1251',$module['name']);
+				$name=$module['name'];
 				$tname=translit($name);
 				
 				if($module['type']=='CRUD' || $module['type']=='TreeCRUD'){
@@ -362,7 +362,7 @@ database: $CFG[database]";
 			$json_answer['Translate']['Flag']='Error';
 			$json_answer['Translate']['Mess'].="'Главное меню БО' Отказ";
 		}
-		$json_answer['Translate']['Mess']=iconv('cp1251','utf-8',$json_answer['Translate']['Mess']);
+		//$json_answer['Translate']['Mess']=iconv('cp1251','utf-8',$json_answer['Translate']['Mess']);
 	break;
 	case 'createCRUDsBO'://создание моделей для всех CRUD & TreeCRUD БО
 		$json_answer['Translate']['Flag']='OK';
@@ -380,7 +380,7 @@ db$table[name].php";
 		//создаём классы CRUD & TreeCRUD
 		foreach ($project['back'] as $pid => $element){
 			if($element['type']=='CRUD'){
-				$viewName=translit(iconv('utf-8', 'cp1251', $element['name']));
+				$viewName=translit($element['name']);
 				$s=makeViewCRUDclass($project['back'], $pid, $project['tables']);
 				file_put_contents('../ViewBO/'.$viewName.'ViewBO.php', $s);
 				checkExceptionFile('scripts/Prototype/exception/'.$viewName.'ViewBO.php', '../ViewBO/'.$viewName.'ViewBO.php');
@@ -413,7 +413,7 @@ del".$viewName."ActionBO.php";
 update".$viewName."ActionBO.php";
 			}
 			if($element['type']=='TreeCRUD'){
-				$viewName=translit(iconv('utf-8', 'cp1251', $element['name']));
+				$viewName=translit($element['name']);
 				$s=makeViewTreeCRUDclass($project['back'], $pid, $project['tables']);
 				file_put_contents('../ViewBO/'.$viewName.'ViewBO.php', $s);
 				checkExceptionFile('scripts/Prototype/exception/'.$viewName.'ViewBO.php', '../ViewBO/'.$viewName.'ViewBO.php');
@@ -446,7 +446,7 @@ del".$viewName."ActionBO.php";
 update".$viewName."ActionBO.php";
 			}
 		}		
-		$json_answer['Translate']['Mess']=iconv('cp1251','utf-8',$json_answer['Translate']['Mess']);
+//		$json_answer['Translate']['Mess']=iconv('cp1251','utf-8',$json_answer['Translate']['Mess']);
 	break;
 	case 'createMenuFO'://создание вьюхи меню ФО
 		copy('scripts/Prototype/fo.php', '../index.php');
@@ -460,7 +460,7 @@ update".$viewName."ActionBO.php";
 			$json_answer['Translate']['Flag']='Error';
 			$json_answer['Translate']['Mess'].="'Главное меню ФО' Отказ";
 		}
-		$json_answer['Translate']['Mess']=iconv('cp1251','utf-8',$json_answer['Translate']['Mess']);
+//		$json_answer['Translate']['Mess']=iconv('cp1251','utf-8',$json_answer['Translate']['Mess']);
 	break;
 	case 'createCRUDsFO'://создание моделей для всех CRUD & TreeCRUD ФО
 		//создаём классы CRUD & TreeCRUD
@@ -468,7 +468,7 @@ update".$viewName."ActionBO.php";
 		$json_answer['Translate']['Mess']="View & Action<br>";
 		foreach ($project['front'] as $pid => $element){
 			if($element['type']=='CRUD'){
-				$viewName=translit(iconv('utf-8', 'cp1251', $element['name']));
+				$viewName=translit($element['name']);
 				$s=makeViewCRUDclassFO($project['front'], $pid, $project['tables']);
 				file_put_contents('../View/'.$viewName.'View.php', $s);
 				checkExceptionFile('scripts/Prototype/exception/'.$viewName.'View.php', '../View/'.$viewName.'View.php');
@@ -501,7 +501,7 @@ del".$viewName."Action.php";
 update".$viewName."Action.php";
 			}
 			if($element['type']=='TreeCRUD'){
-				$viewName=translit(iconv('utf-8', 'cp1251', $element['name']));
+				$viewName=translit($element['name']);
 				$s=makeViewTreeCRUDclassFO($project['front'], $pid, $project['tables']);
 				file_put_contents('../View/'.$viewName.'View.php', $s);
 				checkExceptionFile('scripts/Prototype/exception/'.$viewName.'View.php', '../View/'.$viewName.'View.php');
@@ -590,7 +590,7 @@ update".$viewName."Action.php";
 		$sql="INSERT INTO front_cross_right(module, `right`) VALUES($id, 0)";
 		mysql_query($sql);
 		
-		$json_answer['Translate']['Mess']=iconv('cp1251','utf-8',$json_answer['Translate']['Mess']);
+//		$json_answer['Translate']['Mess']=iconv('cp1251','utf-8',$json_answer['Translate']['Mess']);
 	break;
 }
 echo("(".json_encode($json_answer).")");

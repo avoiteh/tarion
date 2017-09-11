@@ -39,7 +39,7 @@ function json_encode($content, $assoc=false){
 
 
 <title>Tarion CMS</title>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <body onmousedown="main.onmousedown();" onmousemove="main.onmousemove(event);" onmouseup="main.onmouseup();">
 <link rel="stylesheet" href="grid.css" type="text/css"/>
 <div id="Hmain">bgtyyi</div>
@@ -51,15 +51,15 @@ function json_encode($content, $assoc=false){
 <img id="ajax_clock" src="images/ajax-loader.gif" style="position:absolute;left:0px;top:0px;display:none;">
 <script>
 var deb=document.getElementById('debug');
-//при инициализации контекст всегда должен носить имя main
-//здесь держим мегаГлобальную переменную "AJAX-запроса", увы только так :( внутре класса не получается
+//РїСЂРё РёРЅРёС†РёР°Р»РёР·Р°С†РёРё РєРѕРЅС‚РµРєСЃС‚ РІСЃРµРіРґР° РґРѕР»Р¶РµРЅ РЅРѕСЃРёС‚СЊ РёРјСЏ main
+//Р·РґРµСЃСЊ РґРµСЂР¶РёРј РјРµРіР°Р“Р»РѕР±Р°Р»СЊРЅСѓСЋ РїРµСЂРµРјРµРЅРЅСѓСЋ "AJAX-Р·Р°РїСЂРѕСЃР°", СѓРІС‹ С‚РѕР»СЊРєРѕ С‚Р°Рє :( РІРЅСѓС‚СЂРµ РєР»Р°СЃСЃР° РЅРµ РїРѕР»СѓС‡Р°РµС‚СЃСЏ
 var gloAJAXreq=null;
-//HTML-контейнер, всегда id=Hmain
+//HTML-РєРѕРЅС‚РµР№РЅРµСЂ, РІСЃРµРіРґР° id=Hmain
 var main = new TContext('main', 'Hmain');
-//инициализирующая отрисовка
+//РёРЅРёС†РёР°Р»РёР·РёСЂСѓСЋС‰Р°СЏ РѕС‚СЂРёСЃРѕРІРєР°
 main.Paint();
 
-//таблицы БД
+//С‚Р°Р±Р»РёС†С‹ Р‘Р”
 var panelTables = new TPanelTables('panelTables', 'hpanelTables', main);
 panelTables.SendQuest();
 main.elements[main.elements.length]=panelTables;
@@ -71,14 +71,14 @@ main.elements[main.elements.length]=panelBO;
 var panelFO = new TPanelFO('panelFO', 'hpanelFO', main);
 panelFO.SendQuest();
 main.elements[main.elements.length]=panelFO;
-//Транслятор
+//РўСЂР°РЅСЃР»СЏС‚РѕСЂ
 var panelTranslate = new TPanelTranslate('panelTranslate', 'hpanelTranslate', main);
 main.elements[main.elements.length]=panelTranslate;
-//о программе
+//Рѕ РїСЂРѕРіСЂР°РјРјРµ
 var panelAbout = new TPanelAbout('panelAbout', 'hpanelAbout', main);
 main.elements[main.elements.length]=panelAbout;
 
-//рабочая отрисовка
+//СЂР°Р±РѕС‡Р°СЏ РѕС‚СЂРёСЃРѕРІРєР°
 main.Paint();
 //mapView.SendQuest();
 </script>

@@ -9,6 +9,7 @@ trans[0x451] = 0xB8;    // ё
 var escapeOrig = window.escape;
 
 // Переопределяем функцию escape()
+/*
 window.escape = function(str)
 {
   var ret = [];
@@ -23,3 +24,4 @@ window.escape = function(str)
   }
   return escapeOrig(String.fromCharCode.apply(null, ret));
 }
+*/

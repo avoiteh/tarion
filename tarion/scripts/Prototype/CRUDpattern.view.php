@@ -2,7 +2,7 @@
 function makeViewCRUDclass($project, $pid, $tables){
 	$crud=$project[$pid];
 	$parent=$project[$crud['parent']];
-	$viewName=translit(iconv('utf-8', 'cp1251', $crud['name']));
+	$viewName=translit($crud['name']);
 	$mainTable=$tables[$crud['content']['mainTable']];
 	$childView='';
 	$s="<?php
@@ -151,7 +151,7 @@ var \$list$lookUpTable[name];
 			//ищем потомка
 			foreach ($project as $lpid => $element){
 				if($element['parent']==$pid){
-					$childView=translit(iconv('utf-8', 'cp1251', $element['name']));
+					$childView=translit($element['name']);
 					$s.="\$this->childView='".$childView."';
 ";
 				}
@@ -165,7 +165,7 @@ var \$list$lookUpTable[name];
 ";
 		//проверить, кто parent
 		if($parent['type']=='CRUD' || $parent['type']=='TreeCRUD'){
-			$s.="<a href='?view=".translit( iconv('utf-8', 'cp1251', $parent['name']) )."ViewBO'>&lt;&lt;&lt;&lt; Назад</br>";
+			$s.="<a href='?view=".translit( $parent['name'] )."ViewBO'>&lt;&lt;&lt;&lt; Назад</br>";
 		}
 		$s.="
 <form action='?view=$viewName"."ViewBO' method=post>

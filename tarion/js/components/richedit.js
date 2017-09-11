@@ -1,19 +1,19 @@
-//богатый редактор
-//позволяет редактировать текст, выбирать размер и тип шрифта, делать шрифт жирным/курсивом/подчерком
-//вставлять картинки
+//Р±РѕРіР°С‚С‹Р№ СЂРµРґР°РєС‚РѕСЂ
+//РїРѕР·РІРѕР»СЏРµС‚ СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ С‚РµРєСЃС‚, РІС‹Р±РёСЂР°С‚СЊ СЂР°Р·РјРµСЂ Рё С‚РёРї С€СЂРёС„С‚Р°, РґРµР»Р°С‚СЊ С€СЂРёС„С‚ Р¶РёСЂРЅС‹Рј/РєСѓСЂСЃРёРІРѕРј/РїРѕРґС‡РµСЂРєРѕРј
+//РІСЃС‚Р°РІР»СЏС‚СЊ РєР°СЂС‚РёРЅРєРё
 function TRichEdit(name, hname, parent){
 	this.name=name;
 	this.hname=hname;
 	this.parent=parent;
 	this.style = 0;//0-image;1-file
-	this.dx=100;//размеры панели редактирования
+	this.dx=100;//СЂР°Р·РјРµСЂС‹ РїР°РЅРµР»Рё СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
 	this.dy=100;
 	this.text='';
 	this.filename='';
 	
 	this.Paint=function(){
 		s="<table><tr><td height='25px'>";
-		//картинка
+		//РєР°СЂС‚РёРЅРєР°
 		s+="<div id='"+this.hname+"_up0' style='display:block;float:left;'>";
 		s+="<img src='../images/text_img.png' border=0 onclick='"+this.name+".setImage()'>";
 		s+="</div>";
@@ -22,7 +22,7 @@ function TRichEdit(name, hname, parent){
 		s+="</td><dt><img src='../images/text_img_esc.png' border=0 onclick='"+this.name+".setImageEsc();'>";
 		s+='</td></tr></table></form>';
 		s+="</div>";
-		//ссылка
+		//СЃСЃС‹Р»РєР°
 		s+="<div id='"+this.hname+"_link0' style='display:block;float:left;'>";
 		s+="<img src='../images/text_link.png' border=0 onclick='" + this.name + ".setOnCreateLink();'>";
 		s+="</div>";
@@ -30,13 +30,13 @@ function TRichEdit(name, hname, parent){
 		s+="<input type='text' id='"+this.hname+"_link' value='' style='position:relative;top:-4px;'>";
 		s+="<img src='../images/text_link.png' border=0 onclick='"+this.name+".setCreateLink();'>";
 		s+="</div>";
-		//таблица
+		//С‚Р°Р±Р»РёС†Р°
 		s+="<div id='"+this.hname+"_tab0' style='display:block;float:left;'>";
 		s+="<img src='../images/text_table.png' border=0 onclick='" + this.name + ".setOnTable();'>";
 		s+="</div>";
 		s+="<div id='" + this.hname + "_tab1' style='display:none;background-color:#ccffcc;float:left;padding:2 2 2 2;'>";
 		s+="<select style='position:relative;top:-4px;' id='"+this.hname+"_tab'>";
-		s+="<option value='2'>Столбцов</option>";
+		s+="<option value='2'>РЎС‚РѕР»Р±С†РѕРІ</option>";
 		for(var i=1;i<12;i++){
 			s+="<option value="+i+">"+i+"</option>";
 		}
@@ -51,13 +51,13 @@ function TRichEdit(name, hname, parent){
 		//s+="</td><td>";
 		//s+="</td><td width='100%'>";
 		s+="<select style='position:relative;top:-4px;' id='"+this.hname+"_selFontSize' onchange='"+this.name+".setFontSize()'>";
-		s+="<option value='2'>Размер</option>";
+		s+="<option value='2'>Р Р°Р·РјРµСЂ</option>";
 		for(var i=1;i<12;i++){
 			s+="<option value="+i+">"+i+"</option>";
 		}
 		s+="</select>";
 		s+="<select style='position:relative;top:-4px;' id='"+this.hname+"_selFontName' onchange='"+this.name+".setFontName()'>";
-		s+="<option value='Times'>Шрифт</option>";
+		s+="<option value='Times'>РЁСЂРёС„С‚</option>";
 		s+="<option value='Arial'>Arial</option>";
 		s+="<option value='Courier'>Courier</option>";
 		s+="<option value='Times'>Times</option>";
@@ -70,7 +70,7 @@ function TRichEdit(name, hname, parent){
 		s+="</td></tr>";
 		s+="</tr><td colspan=3>";
 		s+="<iframe scrolling='yes' frameborder='1' src='#' id='"+this.hname+"_frameId' name='"+this.name+"_frameId' style='width:"+this.width+"px;height:"+this.height+"px;'></iframe><br>";
-		s+="<input type='button' value='Сохранить' onclick='"+this.name+".saveHTML()'>";
+		s+="<input type='button' value='РЎРѕС…СЂР°РЅРёС‚СЊ' onclick='"+this.name+".saveHTML()'>";
 		s+="</td></tr></table>";
 		return s;
 	}
@@ -197,7 +197,7 @@ function TRichEdit(name, hname, parent){
 		this.iDoc.write(iHTML);
 		this.iDoc.close();
 		if (!this.iDoc.designMode){
-			alert("В этом отстойном браузере наш совершенный редактор работать не будет!");
+			alert("Р’ СЌС‚РѕРј РѕС‚СЃС‚РѕР№РЅРѕРј Р±СЂР°СѓР·РµСЂРµ РЅР°С€ СЃРѕРІРµСЂС€РµРЅРЅС‹Р№ СЂРµРґР°РєС‚РѕСЂ СЂР°Р±РѕС‚Р°С‚СЊ РЅРµ Р±СѓРґРµС‚!");
 		}else{
 			this.iDoc.designMode = (isGecko) ? "on" : "On";
 		}

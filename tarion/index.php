@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-//проверить наличие конфигурацции
+//РїСЂРѕРІРµСЂРёС‚СЊ РЅР°Р»РёС‡РёРµ РєРѕРЅС„РёРіСѓСЂР°С†С†РёРё
 if(isset($_SESSION['CFG'])){
 	$CFG=$_SESSION['CFG'];
 }else{
-	//отобразить бланк конфигурации
+	//РѕС‚РѕР±СЂР°Р·РёС‚СЊ Р±Р»Р°РЅРє РєРѕРЅС„РёРіСѓСЂР°С†РёРё
 	if(file_exists('tarion.cfg')){
 		$CFG=unserialize(file_get_contents('tarion.cfg'));
 		$_SESSION['CFG']=$CFG;
@@ -31,15 +31,15 @@ if(isset($_GET['form_flag']) && $_GET['form_flag']=='cfg'){
 <html>
 <head>
 <title>Tarion</title>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-Конфигурация&nbsp;&nbsp;|&nbsp;&nbsp;<a href="main.php">Главная панель</a><br>
+РљРѕРЅС„РёРіСѓСЂР°С†РёСЏ&nbsp;&nbsp;|&nbsp;&nbsp;<a href="main.php">Р“Р»Р°РІРЅР°СЏ РїР°РЅРµР»СЊ</a><br>
 <form action="?form_flag=cfg" method="POST">
 <table border="1">
 <tr>
-	<td>Имя</td>
-	<td>Поле</td>
+	<td>РРјСЏ</td>
+	<td>РџРѕР»Рµ</td>
 </tr>
 <?php
 foreach ($CFG as $key=>$val){

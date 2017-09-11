@@ -1,4 +1,4 @@
-//визуальный компонент для отображения таблиц базы данных
+//РІРёР·СѓР°Р»СЊРЅС‹Р№ РєРѕРјРїРѕРЅРµРЅС‚ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚Р°Р±Р»РёС† Р±Р°Р·С‹ РґР°РЅРЅС‹С…
 function TDBTables(name,hname,maincontext){
 	this.name = name;
 	this.hname=hname;
@@ -10,29 +10,29 @@ function TDBTables(name,hname,maincontext){
 	this.sel_bgcolor='#0000ff';
 	this.width='100%';
 	this.height='100%';
-	this.tables = new Array;//многовложенный массив, собственно отображаемый список таблиц
-	this.divScroll=0;//чтобы сохранять прокрутку div
+	this.tables = new Array;//РјРЅРѕРіРѕРІР»РѕР¶РµРЅРЅС‹Р№ РјР°СЃСЃРёРІ, СЃРѕР±СЃС‚РІРµРЅРЅРѕ РѕС‚РѕР±СЂР°Р¶Р°РµРјС‹Р№ СЃРїРёСЃРѕРє С‚Р°Р±Р»РёС†
+	this.divScroll=0;//С‡С‚РѕР±С‹ СЃРѕС…СЂР°РЅСЏС‚СЊ РїСЂРѕРєСЂСѓС‚РєСѓ div
 	
 	this.style = 0;
 		
-	this.onmousemove=function(){}//очень нужная заглушка!!!
+	this.onmousemove=function(){}//РѕС‡РµРЅСЊ РЅСѓР¶РЅР°СЏ Р·Р°РіР»СѓС€РєР°!!!
 	
 	this.collectData=function(){
-		//собрать все данные из полей
+		//СЃРѕР±СЂР°С‚СЊ РІСЃРµ РґР°РЅРЅС‹Рµ РёР· РїРѕР»РµР№
 		var id, newtable;
 		var newfield;
 		var type,remark;
 		var obj;
 		
 		for(var i in this.tables){
-			//имя таблицы
+			//РёРјСЏ С‚Р°Р±Р»РёС†С‹
 			id=this.hname+'_'+this.tables[i]['name'];
 			obj=document.getElementById(id);
 			//alert(id+"\n"+obj);
 			newtable=obj.value;
 			
 			for(field in this.tables[i]['fields']){
-				//имя поля
+				//РёРјСЏ РїРѕР»СЏ
 				id=this.hname+'_'+this.tables[i]['name']+'_'+field+'_name';
 				obj=document.getElementById(id);
 				//alert(id+"\n"+obj);
@@ -67,7 +67,7 @@ function TDBTables(name,hname,maincontext){
 		if(j){
 			this.tables.splice(j,1);
 			this.maincontext.Paint();
-			document.getElementById(this.hname).scrollTop=this.divScroll;//восстановить прокрутку DIV
+			document.getElementById(this.hname).scrollTop=this.divScroll;//РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РїСЂРѕРєСЂСѓС‚РєСѓ DIV
 		}
 	}
 	this.onDropField=function(table,field){
@@ -76,7 +76,7 @@ function TDBTables(name,hname,maincontext){
 		if(j){
 			delete this.tables[j]['fields'][field];
 			this.maincontext.Paint();
-			document.getElementById(this.hname).scrollTop=this.divScroll;//восстановить прокрутку DIV
+			document.getElementById(this.hname).scrollTop=this.divScroll;//РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РїСЂРѕРєСЂСѓС‚РєСѓ DIV
 		}
 	}
 	this.onAddTable=function(){
@@ -86,7 +86,7 @@ function TDBTables(name,hname,maincontext){
 		this.tables[n]['name']='new_table';
 		this.tables[n]['fields']=new Array;
 		this.maincontext.Paint();
-		document.getElementById(this.hname).scrollTop=this.divScroll;//восстановить прокрутку DIV
+		document.getElementById(this.hname).scrollTop=this.divScroll;//РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РїСЂРѕРєСЂСѓС‚РєСѓ DIV
 	}
 	this.onAddField=function(table){
 		this.collectData();
@@ -96,37 +96,37 @@ function TDBTables(name,hname,maincontext){
 			while(this.tables[j]['fields']['newField'+id]!=null){id++;}
 			this.tables[j]['fields']['newField'+id]=new Array;
 			this.tables[j]['fields']['newField'+id]['type']='int';
-			this.tables[j]['fields']['newField'+id]['remark']='новое поле';
+			this.tables[j]['fields']['newField'+id]['remark']='РЅРѕРІРѕРµ РїРѕР»Рµ';
 			this.maincontext.Paint();
-			document.getElementById(this.hname).scrollTop=this.divScroll;//восстановить прокрутку DIV
+			document.getElementById(this.hname).scrollTop=this.divScroll;//РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РїСЂРѕРєСЂСѓС‚РєСѓ DIV
 		}
 	}
 	this.Paint = function(){
 		this.debug='';
-		var obj=document.getElementById(this.hname);//запомнить прокрутку DIV
+		var obj=document.getElementById(this.hname);//Р·Р°РїРѕРјРЅРёС‚СЊ РїСЂРѕРєСЂСѓС‚РєСѓ DIV
 		if(obj!=null){this.divScroll=obj.scrollTop;}
 		
 		switch(this.style){
 			case 0:
 				s = "<div onmousemove='" + this.name + ".onmousemove(event);' style='overflow:scroll;width:" + this.width + ";height:" + this.height + "' id='" + this.hname + "'>";
-				//оттут унутре dbtree
-				//для каждой таблицы
-				s+="<br><img src='images/new.jpg' width='12px' title='Создать новую таблицу' onclick='"+this.name+".onAddTable();'>";
+				//РѕС‚С‚СѓС‚ СѓРЅСѓС‚СЂРµ dbtree
+				//РґР»СЏ РєР°Р¶РґРѕР№ С‚Р°Р±Р»РёС†С‹
+				s+="<br><img src='images/new.jpg' width='12px' title='РЎРѕР·РґР°С‚СЊ РЅРѕРІСѓСЋ С‚Р°Р±Р»РёС†Сѓ' onclick='"+this.name+".onAddTable();'>";
 				s+="<table cellspacing=0 cellpadding=0 style='font-size:12px;width:100%;'>";
 				var field;
 				var tcol='cccccc';
 				for(var i in this.tables){
 					s+="<tr bgcolor='"+tcol+"'>";
 					s+="<td colspan=4>"+this.paintInput(this.hname+'_'+this.tables[i]['name'], this.tables[i]['name'], 'font-size:14px; font-weight:bold; background-color:#'+tcol) +"</td>";
-					s+="<td><img src='images/new.jpg' width='12px' title='Добавить поле' onclick='"+this.name+".onAddField(\""+this.tables[i]['name']+"\")'>";
-					s+="<img src='images/del.jpg' width='12px' title='Удалить таблицу' onclick='"+this.name+".onDropTable(\""+this.tables[i]['name']+"\")'></td></tr>";
+					s+="<td><img src='images/new.jpg' width='12px' title='Р”РѕР±Р°РІРёС‚СЊ РїРѕР»Рµ' onclick='"+this.name+".onAddField(\""+this.tables[i]['name']+"\")'>";
+					s+="<img src='images/del.jpg' width='12px' title='РЈРґР°Р»РёС‚СЊ С‚Р°Р±Р»РёС†Сѓ' onclick='"+this.name+".onDropTable(\""+this.tables[i]['name']+"\")'></td></tr>";
 					s+="<tr bgcolor='"+tcol+"'><td width='50px'>&nbsp;</td><td colspan=3>ID +</td><td> </td></tr>";
 					for(field in this.tables[i]['fields']){
 						s+="<tr bgcolor='"+tcol+"'><td width='50px'>&nbsp;</td>";
 						s+="<td width='50px'>"+this.paintInput(this.hname+'_'+this.tables[i]['name']+'_'+field+'_name', field, 'font-size:12px; background-color:#'+tcol) +"</td>";
 						s+="<td width='50px'>" + this.paintSelectType(this.hname+'_'+this.tables[i]['name']+'_'+field+'_type', this.tables[i]['fields'][field]['type'], 'font-size:12px; background-color:#'+tcol) + "</td>";
 						s+="<td>" + this.paintInput(this.hname+'_'+this.tables[i]['name']+'_'+field+'_remark', this.tables[i]['fields'][field]['remark'], 'font-size:12px; background-color:#'+tcol) + "</td>";
-						s+="<td><img src='images/del.jpg' width='12px' title='Удалить поле' onclick='"+this.name+".onDropField(\""+this.tables[i]['name']+"\", \""+field+"\");'></td></tr>";
+						s+="<td><img src='images/del.jpg' width='12px' title='РЈРґР°Р»РёС‚СЊ РїРѕР»Рµ' onclick='"+this.name+".onDropField(\""+this.tables[i]['name']+"\", \""+field+"\");'></td></tr>";
 					}
 
 					if(tcol=='cccccc'){tcol='ffffff';}else{tcol='cccccc';}
@@ -137,7 +137,7 @@ function TDBTables(name,hname,maincontext){
 		}
 		//alert(this.debug);
 		return s;
-	}//функция отрисовки, однако, она просто возвращает HTML! 
+	}//С„СѓРЅРєС†РёСЏ РѕС‚СЂРёСЃРѕРІРєРё, РѕРґРЅР°РєРѕ, РѕРЅР° РїСЂРѕСЃС‚Рѕ РІРѕР·РІСЂР°С‰Р°РµС‚ HTML! 
 	
 	this.paintSelectType=function(id,type,style){
 		s="<select style='"+style+"' id='"+id+"'>";

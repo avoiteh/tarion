@@ -49,7 +49,8 @@ if(isset($_POST['query'])){
 
 if($query[0]=='('){$query[0]=' ';}
 if($query[strlen($query)-1]==')'){$query[strlen($query)-1]=' ';}
-$query=iconv("cp1251", "UTF-8",$query);
+//$query=iconv("cp1251", "UTF-8",$query);
+//var_dump($query);
 $json_query= json_decode($query);
 //var_dump($query);echo("<hr><pre>");var_dump($json_query);echo("</pre>");
 //$test = array("111","222","333");

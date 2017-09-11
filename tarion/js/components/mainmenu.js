@@ -2,12 +2,12 @@ function TMainMenu(name,hname,maincontext){
 	this.type='TMainMenu';
 	this.name=name;
 	this.hname=hname;
-	this.context=maincontext;//на каком контексте лежит
-	this.style=0;//числовой указатель стиля
-	this.color=0;//числовой указатель цвета фона 0-белый
+	this.context=maincontext;//РЅР° РєР°РєРѕРј РєРѕРЅС‚РµРєСЃС‚Рµ Р»РµР¶РёС‚
+	this.style=0;//С‡РёСЃР»РѕРІРѕР№ СѓРєР°Р·Р°С‚РµР»СЊ СЃС‚РёР»СЏ
+	this.color=0;//С‡РёСЃР»РѕРІРѕР№ СѓРєР°Р·Р°С‚РµР»СЊ С†РІРµС‚Р° С„РѕРЅР° 0-Р±РµР»С‹Р№
 	
 	this.Paint=function(){
-		//назначить цвет фона
+		//РЅР°Р·РЅР°С‡РёС‚СЊ С†РІРµС‚ С„РѕРЅР°
 		var bgk=this.color;
 		switch(this.color){
 			case 0:
@@ -15,35 +15,35 @@ function TMainMenu(name,hname,maincontext){
 			break;
 		}
 		
-		//собственно панель
+		//СЃРѕР±СЃС‚РІРµРЅРЅРѕ РїР°РЅРµР»СЊ
 		switch(this.style){
 			case 0:
 				var s="<table id='"+this.hname+"' style='font-size:12px;position:relative;top:-95px;left:3px;' cellpadding=0 cellspacing=0>";
-				//нарисовать кнопки меню
-				s+="<tr><td><br><div class='BtnMain' align=center valign=middle onclick='"+this.name+".Press(0);'><span style='position:relative;top:7px;'>Главная</span></div></td></tr>";
+				//РЅР°СЂРёСЃРѕРІР°С‚СЊ РєРЅРѕРїРєРё РјРµРЅСЋ
+				s+="<tr><td><br><div class='BtnMain' align=center valign=middle onclick='"+this.name+".Press(0);'><span style='position:relative;top:7px;'>Р“Р»Р°РІРЅР°СЏ</span></div></td></tr>";
 				s+="<tr><td><div class='";
 				if(panelArticles){
 					if(panelArticles.open){s+="BtnMainDown";}else{s+="BtnMain";}
 				}else{s+="BtnMain";}
-				s+="' align=center valign=middle onclick='"+this.name+".Press(1);'><span style='position:relative;top:7px;'>Статьи</span></div></td></tr>";
+				s+="' align=center valign=middle onclick='"+this.name+".Press(1);'><span style='position:relative;top:7px;'>РЎС‚Р°С‚СЊРё</span></div></td></tr>";
 				s+="<tr><td><div class='";
 				if(panelCatalog){
 					if(panelCatalog.open){s+="BtnMainDown";}else{s+="BtnMain";}
 				}else{s+="BtnMain";}
-				s+="' align=center valign=middle onclick='"+this.name+".Press(2);'><span style='position:relative;top:7px;'>Каталог</span></div></td></tr>";
+				s+="' align=center valign=middle onclick='"+this.name+".Press(2);'><span style='position:relative;top:7px;'>РљР°С‚Р°Р»РѕРі</span></div></td></tr>";
 				if(this.context.authorize){
 					s+="<tr><td><div class='";
 				if(panelBasket){
 					if(panelBasket.open){s+="BtnMainDown";}else{s+="BtnMain";}
 				}else{s+="BtnMain";}
-				s+="' align=center valign=middle onclick='"+this.name+".Press(3);'><span style='position:relative;top:7px;'>Корзина</span></div></td></tr>";
+				s+="' align=center valign=middle onclick='"+this.name+".Press(3);'><span style='position:relative;top:7px;'>РљРѕСЂР·РёРЅР°</span></div></td></tr>";
 				}
 				s+="<tr><td><div class='";
 				if(panelAbout){
 					if(panelAbout.open){s+="BtnMainDown";}else{s+="BtnMain";}
 				}else{s+="BtnMain";}
-				s+="' align=center valign=middle onclick='"+this.name+".Press(4);'><span style='position:relative;top:3px;'>Контакты</span></div></td></tr>";
-				//s+="<tr><td><div class='BtnMain' align=center valign=middle onclick='"+this.name+".Press(5);'><span style='position:relative;top:7px;'>Контакты</span></div></td></tr>";
+				s+="' align=center valign=middle onclick='"+this.name+".Press(4);'><span style='position:relative;top:3px;'>РљРѕРЅС‚Р°РєС‚С‹</span></div></td></tr>";
+				//s+="<tr><td><div class='BtnMain' align=center valign=middle onclick='"+this.name+".Press(5);'><span style='position:relative;top:7px;'>РљРѕРЅС‚Р°РєС‚С‹</span></div></td></tr>";
 				s+="<tr><td><div class='";
 				if(panelAuth){
 					if(panelAuth.open){s+="BtnMainDown";}else{s+="BtnMain";}
@@ -52,18 +52,18 @@ function TMainMenu(name,hname,maincontext){
 				if(panelAuth){
 					s+=panelAuth.title;
 				}else{
-					s+="Вход";
+					s+="Р’С…РѕРґ";
 				}
 				s+="</span></div></td></tr>";
-				s+="<tr><td><div class='BtnMain' align=center valign=middle onclick='"+this.name+".Press(6);'><span style='position:relative;top:7px;'>Получить ссылку</span></div></td></tr>";
+				s+="<tr><td><div class='BtnMain' align=center valign=middle onclick='"+this.name+".Press(6);'><span style='position:relative;top:7px;'>РџРѕР»СѓС‡РёС‚СЊ СЃСЃС‹Р»РєСѓ</span></div></td></tr>";
 				s+="<tr><td height='100%' id='"+this.hname+"_megaLink'>&nbsp;</td></tr>";
 				s+="<tr><td height='100%'><img src='../images/apteka.png'></td></tr>";
 				s+="</table>";
 			break;
 		}
 		return s;
-	}//функция отрисовки, однако, она просто возвращает HTML! 
-	//ибо непосредственной отрисовкой занимается контекст
+	}//С„СѓРЅРєС†РёСЏ РѕС‚СЂРёСЃРѕРІРєРё, РѕРґРЅР°РєРѕ, РѕРЅР° РїСЂРѕСЃС‚Рѕ РІРѕР·РІСЂР°С‰Р°РµС‚ HTML! 
+	//РёР±Рѕ РЅРµРїРѕСЃСЂРµРґСЃС‚РІРµРЅРЅРѕР№ РѕС‚СЂРёСЃРѕРІРєРѕР№ Р·Р°РЅРёРјР°РµС‚СЃСЏ РєРѕРЅС‚РµРєСЃС‚
 	
 	this.createMegalink=function(){
 		var s=this.context.megaLink();
@@ -73,18 +73,19 @@ function TMainMenu(name,hname,maincontext){
 	
 	this.SendQuestMegaLink=function(slink){
 		var t=slink.split('"').join('\\"');
-		var q='{"id":"megaLink","content":"'+escape(t)+'"}';
-//alert(q);
+//		var q='{"id":"megaLink","content":"'+escape(t)+'"}';
+		var q='{"id":"megaLink","content":"'+t+'"}';
+console.log(q);
 //document.getElementById(this.hname+"_megaLink").innerHTML=q;
 		this.context.AJAXquery(q, this.name);
 	}
 	
-	this.AJAXresult=function(json_serial){//на основании полученного JSON объекта
+	this.AJAXresult=function(json_serial){//РЅР° РѕСЃРЅРѕРІР°РЅРёРё РїРѕР»СѓС‡РµРЅРЅРѕРіРѕ JSON РѕР±СЉРµРєС‚Р°
 //alert(json_serial);
 		var json=eval(json_serial);
 		switch(json['id']){
 			case 'megaLink':
-				document.getElementById(this.hname+"_megaLink").innerHTML='<a href="'+json['megaLink']+'">Ссылка сюда</a>';
+				document.getElementById(this.hname+"_megaLink").innerHTML='<a href="'+json['megaLink']+'">РЎСЃС‹Р»РєР° СЃСЋРґР°</a>';
 			break;
 		}
 	}
@@ -105,7 +106,7 @@ function TMainMenu(name,hname,maincontext){
 					}else{
 						panelArticles = new TPanelArticles('panelArticles', 'hpanelArticles', main);
 						main.elements[main.elements.length]=panelArticles;
-						panelArticles.title='Статьи';
+						panelArticles.title='РЎС‚Р°С‚СЊРё';
 						panelArticles.open=true;
 						panelArticles.SendQuest();
 					}
@@ -123,7 +124,7 @@ function TMainMenu(name,hname,maincontext){
 					}else{
 						panelCatalog = new TPanelCatalog('panelCatalog', 'hpanelCatalog', main);
 						main.elements[main.elements.length]=panelCatalog;
-						panelCatalog.title='Каталог';
+						panelCatalog.title='РљР°С‚Р°Р»РѕРі';
 						panelCatalog.open=true;
 						panelCatalog.SendQuest();
 					}
@@ -139,7 +140,7 @@ function TMainMenu(name,hname,maincontext){
 				}else{
 					panelCatalog = new TPanelBasket('panelBasket', 'hpanelBasket', main);
 					main.elements[main.elements.length]=panelBasket;
-					//panelBasket.title='Каталог';
+					//panelBasket.title='РљР°С‚Р°Р»РѕРі';
 					panelBasket.open=true;
 					panelBasket.SendQuest();
 				}
@@ -171,17 +172,17 @@ function TMainMenu(name,hname,maincontext){
 				var panel = main.getObjectByName('panelAuth');
 				if(panel){
 					if(main.authorize){
-						panel.title='Выход';	
+						panel.title='Р’С‹С…РѕРґ';	
 					}else{
-						panel.title='Вход';
+						panel.title='Р’С…РѕРґ';
 					}
 					panel.open=open;
 				}else{
 					panelAuth = new TPanelAuth('panelAuth', 'HpanelAuth', main);
 					if(main.authorize){
-						panelAuth.title='Выход';	
+						panelAuth.title='Р’С‹С…РѕРґ';	
 					}else{
-						panelAuth.title='Вход';
+						panelAuth.title='Р’С…РѕРґ';
 					}
 					panelAuth.open=open;
 					main.elements[main.elements.length]=panelAuth;

@@ -1,6 +1,6 @@
 <?php
 function makeEditCRUDclass($crud, $tables){
-	$viewName=translit(iconv('utf-8', 'cp1251', $crud['name']));
+	$viewName=translit($crud['name']);
 	$mainTable=$tables[$crud['content']['mainTable']];
 	$s="<?php
 class ".$viewName."EditBO{

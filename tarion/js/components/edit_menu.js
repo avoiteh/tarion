@@ -1,14 +1,14 @@
 function TEditMenu(name,hname,parent){
 	this.type='TEditMenu';
-	this.title='Мастер пункта меню';
+	this.title='РњР°СЃС‚РµСЂ РїСѓРЅРєС‚Р° РјРµРЅСЋ';
 	this.name=name;
 	this.hname=hname;
 	this.mouseDX=0;
 	this.mouseDY=0;
 	this.enable = true;
-	this.parent=parent;//родитель
-	this.style=0;//числовой указатель стиля
-	this.color=0;//числовой указатель цвета фона 0-белый
+	this.parent=parent;//СЂРѕРґРёС‚РµР»СЊ
+	this.style=0;//С‡РёСЃР»РѕРІРѕР№ СѓРєР°Р·Р°С‚РµР»СЊ СЃС‚РёР»СЏ
+	this.color=0;//С‡РёСЃР»РѕРІРѕР№ СѓРєР°Р·Р°С‚РµР»СЊ С†РІРµС‚Р° С„РѕРЅР° 0-Р±РµР»С‹Р№
 	this.elementId=null;
 	this.element=null;
 	
@@ -18,11 +18,11 @@ function TEditMenu(name,hname,parent){
 		}
 		if(this.element!=null){
 			var s="<h4>"+this.title+"</h4>";
-			s+="Наименование : <input type=text id='"+this.hname+"_name' value='"+this.element['name']+"'>";
-			s+="<input type=button value=' Сохранить ' onclick='"+this.name+".saveElement();'><br>";
-			//проверим кто у данного пункта в потомках
-			s+="<table cellspacing=0 cellpadding=0><tr bgcolor='#cccccc'><td colspan=3>Потомки данного элемента<br><small>Потомками элемента типа <b>menu</b> могут быть:<br> - произвольное количество элементов типа <b>menu</b>;<br> - или один элемент типа <b>\"Таблица\"</b>;<br> - или один элемент типа <b>\"Дерево\"</b>;</small></td></tr>";
-			s+="<tr bgcolor='#cccccc'><td>Наименование</td><td>Тип</td><td></td></tr>";
+			s+="РќР°РёРјРµРЅРѕРІР°РЅРёРµ : <input type=text id='"+this.hname+"_name' value='"+this.element['name']+"'>";
+			s+="<input type=button value=' РЎРѕС…СЂР°РЅРёС‚СЊ ' onclick='"+this.name+".saveElement();'><br>";
+			//РїСЂРѕРІРµСЂРёРј РєС‚Рѕ Сѓ РґР°РЅРЅРѕРіРѕ РїСѓРЅРєС‚Р° РІ РїРѕС‚РѕРјРєР°С…
+			s+="<table cellspacing=0 cellpadding=0><tr bgcolor='#cccccc'><td colspan=3>РџРѕС‚РѕРјРєРё РґР°РЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°<br><small>РџРѕС‚РѕРјРєР°РјРё СЌР»РµРјРµРЅС‚Р° С‚РёРїР° <b>menu</b> РјРѕРіСѓС‚ Р±С‹С‚СЊ:<br> - РїСЂРѕРёР·РІРѕР»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ С‚РёРїР° <b>menu</b>;<br> - РёР»Рё РѕРґРёРЅ СЌР»РµРјРµРЅС‚ С‚РёРїР° <b>\"РўР°Р±Р»РёС†Р°\"</b>;<br> - РёР»Рё РѕРґРёРЅ СЌР»РµРјРµРЅС‚ С‚РёРїР° <b>\"Р”РµСЂРµРІРѕ\"</b>;</small></td></tr>";
+			s+="<tr bgcolor='#cccccc'><td>РќР°РёРјРµРЅРѕРІР°РЅРёРµ</td><td>РўРёРї</td><td></td></tr>";
 			var j, flag;
 			var cntMenu=0;
 			var cntCRUD=0;
@@ -36,7 +36,7 @@ function TEditMenu(name,hname,parent){
 					if(this.parent.bo[i]['type']=='menu'){cntMenu++;}
 					if(this.parent.bo[i]['type']=='CRUD'){cntCRUD++;}
 					if(this.parent.bo[i]['type']=='TreeCRUD'){cntTreeCRUD++;}
-					//проверить есть ли у данного элемента потомки, если нет, то показать иконку "удалить"
+					//РїСЂРѕРІРµСЂРёС‚СЊ РµСЃС‚СЊ Р»Рё Сѓ РґР°РЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РїРѕС‚РѕРјРєРё, РµСЃР»Рё РЅРµС‚, С‚Рѕ РїРѕРєР°Р·Р°С‚СЊ РёРєРѕРЅРєСѓ "СѓРґР°Р»РёС‚СЊ"
 					flag=true;
 					for(j in this.parent.bo){
 						if(this.parent.bo[j]['parent']==i){
@@ -44,13 +44,13 @@ function TEditMenu(name,hname,parent){
 						}
 					}
 					if(flag){
-						s+="<img src='images/del.jpg' width=12px title='Удалить элемент' onclick='"+this.name+".deleteElement("+i+");'>";
+						s+="<img src='images/del.jpg' width=12px title='РЈРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚' onclick='"+this.name+".deleteElement("+i+");'>";
 					}
 					s+='</td></tr>';
 					if(bcol=='cccccc'){bcol='ffffff';}else{bcol='cccccc';}
 				}
 			}
-			//добавить элемент
+			//РґРѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚
 			s+="<tr><td colspan=3>"+this.makeAddElement(cntMenu,cntCRUD,cntTreeCRUD)+"</td></tr>";
 			s+="</table>";
 			return s;
@@ -59,13 +59,13 @@ function TEditMenu(name,hname,parent){
 	this.nameOfType=function(type){
 		switch(type){
 			case 'menu':
-				return 'Пункт меню';
+				return 'РџСѓРЅРєС‚ РјРµРЅСЋ';
 			break;
 			case 'CRUD':
-				return 'Таблица';
+				return 'РўР°Р±Р»РёС†Р°';
 			break;
 			case 'TreeCRUD':
-				return 'Дерево';
+				return 'Р”РµСЂРµРІРѕ';
 			break;
 		}
 	}
@@ -86,13 +86,13 @@ function TEditMenu(name,hname,parent){
 	this.makeAddElement=function(cntMenu,cntCRUD,cntTreeCRUD){
 		s='';
 		if(cntCRUD==0 && cntTreeCRUD==0){
-			s+="Добавить элемент типа <select id="+this.hname+"_addElem>";
-			s+="<option value='menu'>Пункт меню</option>";
+			s+="Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚ С‚РёРїР° <select id="+this.hname+"_addElem>";
+			s+="<option value='menu'>РџСѓРЅРєС‚ РјРµРЅСЋ</option>";
 			if(cntMenu==0){
-				s+="<option value='CRUD'>Таблица</option>";
-				s+="<option value='TreeCRUD'>Дерево</option>";
+				s+="<option value='CRUD'>РўР°Р±Р»РёС†Р°</option>";
+				s+="<option value='TreeCRUD'>Р”РµСЂРµРІРѕ</option>";
 			}
-			s+="</select>&nbsp;<img src='images/new.jpg' width=12px title='Создать элемент - потомок' onclick='"+this.name+".newElement();'>";
+			s+="</select>&nbsp;<img src='images/new.jpg' width=12px title='РЎРѕР·РґР°С‚СЊ СЌР»РµРјРµРЅС‚ - РїРѕС‚РѕРјРѕРє' onclick='"+this.name+".newElement();'>";
 		}
 		return s;
 	}

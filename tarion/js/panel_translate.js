@@ -1,15 +1,15 @@
 function TPanelTranslate(name,hname,context){
 	this.type='TPanelTranslate';
-	this.title='Транслятор';
+	this.title='РўСЂР°РЅСЃР»СЏС‚РѕСЂ';
 	this.name=name;
 	this.hname=hname;
 	this.mouseDX=0;
 	this.mouseDY=0;
 	this.enable = true;
 	this.open = false;
-	this.context=context;//на каком контексте лежит
-	this.style=0;//числовой указатель стиля
-	this.color=0;//числовой указатель цвета фона 0-белый
+	this.context=context;//РЅР° РєР°РєРѕРј РєРѕРЅС‚РµРєСЃС‚Рµ Р»РµР¶РёС‚
+	this.style=0;//С‡РёСЃР»РѕРІРѕР№ СѓРєР°Р·Р°С‚РµР»СЊ СЃС‚РёР»СЏ
+	this.color=0;//С‡РёСЃР»РѕРІРѕР№ СѓРєР°Р·Р°С‚РµР»СЊ С†РІРµС‚Р° С„РѕРЅР° 0-Р±РµР»С‹Р№
 	this.left=400;
 	this.top=25;
 	this.width=500;
@@ -17,13 +17,13 @@ function TPanelTranslate(name,hname,context){
 	this.stage=0;
 
 	this.Paint=function(){
-		//назначить цвет фона
+		//РЅР°Р·РЅР°С‡РёС‚СЊ С†РІРµС‚ С„РѕРЅР°
 		var bgk=this.color;
 		var s="<table id='" + this.hname + "' style='width:" + this.width + "px;height:" + this.height + "px;background-color:#ffffcc;border:1px solid #000000;position:absolute;left:" + this.left + ";top:" + this.top + ";z-index:100' onmouseover='" + this.context.name + ".currentobject=" + this.name + ";'><tr bgcolor='#cccccc'><td>" + this.title + "</td><td align='right' height=10><img src='" + this.context.images_path + "close.gif' onmousedown='" + this.context.name + ".Opened(" + this.name + ", false);'>";
 				//<img src='"+context.images_path+"free.gif' onmousedown='"+this.context.name+".freeObject("+this.name+");'>
 
 		s+="</td></tr><tr><td valign=top colspan=2>";
-		s+="<input type=button value=' Начать трансляцию проекта ' onclick='"+this.name+".stage=0;"+this.name+".stageTranslate();'>";
+		s+="<input type=button value=' РќР°С‡Р°С‚СЊ С‚СЂР°РЅСЃР»СЏС†РёСЋ РїСЂРѕРµРєС‚Р° ' onclick='"+this.name+".stage=0;"+this.name+".stageTranslate();'>";
 		s+="<div style='overflow:scroll;width:100%;height:"+(this.height-50)+"px;font-size:12px;' id='"+this.hname+"_logTranslate'>";
 		s+="</div>";
 		s+="</table>";
@@ -32,33 +32,33 @@ function TPanelTranslate(name,hname,context){
 	
 	this.stageTranslate=function(){
 		switch(this.stage){
-			case 0://проверка доступности БД
+			case 0://РїСЂРѕРІРµСЂРєР° РґРѕСЃС‚СѓРїРЅРѕСЃС‚Рё Р‘Р”
 				document.getElementById(this.hname+'_logTranslate').innerHTML='';
 				this.SendQuest('checkDB');
 			break;
-			case 1://проверка доступности папки
+			case 1://РїСЂРѕРІРµСЂРєР° РґРѕСЃС‚СѓРїРЅРѕСЃС‚Рё РїР°РїРєРё
 				this.SendQuest('checkDir');
 			break;
-			case 2://создание таблиц
+			case 2://СЃРѕР·РґР°РЅРёРµ С‚Р°Р±Р»РёС†
 				this.SendQuest('createTables');
 			break;
-			case 3://проверка наличия таблицц для системы авторизации и разделения доступа
+			case 3://РїСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ С‚Р°Р±Р»РёС†С† РґР»СЏ СЃРёСЃС‚РµРјС‹ Р°РІС‚РѕСЂРёР·Р°С†РёРё Рё СЂР°Р·РґРµР»РµРЅРёСЏ РґРѕСЃС‚СѓРїР°
 				this.SendQuest('checkAuthDB');
 			break;
-			case 4://создание моделей, вьюх и акшинов для системы авторизации и разделения доступа
+			case 4://СЃРѕР·РґР°РЅРёРµ РјРѕРґРµР»РµР№, РІСЊСЋС… Рё Р°РєС€РёРЅРѕРІ РґР»СЏ СЃРёСЃС‚РµРјС‹ Р°РІС‚РѕСЂРёР·Р°С†РёРё Рё СЂР°Р·РґРµР»РµРЅРёСЏ РґРѕСЃС‚СѓРїР°
 				this.SendQuest('createAuth');
 			break;
-			case 5://создание вьюхи меню БО
+			case 5://СЃРѕР·РґР°РЅРёРµ РІСЊСЋС…Рё РјРµРЅСЋ Р‘Рћ
 				this.SendQuest('createMenuBO');
 			break;
-			case 6://создание моделей для всех CRUD & TreeCRUD БО
+			case 6://СЃРѕР·РґР°РЅРёРµ РјРѕРґРµР»РµР№ РґР»СЏ РІСЃРµС… CRUD & TreeCRUD Р‘Рћ
 				this.SendQuest('createCRUDsBO');
 			break;
 		
-			case 7://создание вьюхи меню ФО
+			case 7://СЃРѕР·РґР°РЅРёРµ РІСЊСЋС…Рё РјРµРЅСЋ Р¤Рћ
 				this.SendQuest('createMenuFO');
 			break;
-			case 8://создание моделей для всех CRUD & TreeCRUD ФО
+			case 8://СЃРѕР·РґР°РЅРёРµ РјРѕРґРµР»РµР№ РґР»СЏ РІСЃРµС… CRUD & TreeCRUD Р¤Рћ
 				this.SendQuest('createCRUDsFO');
 			break;
 		}
@@ -73,12 +73,12 @@ function TPanelTranslate(name,hname,context){
 				this.stageTranslate();
 			}else{
 				this.stage=0;
-				alert('Трансляция завершена!');
+				alert('РўСЂР°РЅСЃР»СЏС†РёСЏ Р·Р°РІРµСЂС€РµРЅР°!');
 			}
 		}
 		if(res['Flag']=='Error'){
 			obj.innerHTML+='<hr><span style="color:#ff0000;">'+res['Mess']+'</span><br><hr>';
-			alert('Ошибка трансляции.');
+			alert('РћС€РёР±РєР° С‚СЂР°РЅСЃР»СЏС†РёРё.');
 			this.stage=0;
 		}
 	}
@@ -89,7 +89,7 @@ function TPanelTranslate(name,hname,context){
 		context.AJAXquery(q, this.name);
 	}
 	
-	this.AJAXresult=function(json_serial){//на основании полученного JSON объекта
+	this.AJAXresult=function(json_serial){//РЅР° РѕСЃРЅРѕРІР°РЅРёРё РїРѕР»СѓС‡РµРЅРЅРѕРіРѕ JSON РѕР±СЉРµРєС‚Р°
 //alert(json_serial);
 		var json=eval(json_serial);
 //alert(json['Translate']);

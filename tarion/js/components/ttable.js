@@ -1,4 +1,4 @@
-//визуальный компонент для отображения таблицы
+//РІРёР·СѓР°Р»СЊРЅС‹Р№ РєРѕРјРїРѕРЅРµРЅС‚ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚Р°Р±Р»РёС†С‹
 function TTable(name,hname,maincontext){
 	this.name = name;
 	this.hname=hname;
@@ -12,20 +12,20 @@ function TTable(name,hname,maincontext){
 	this.headerbgcolor='#cccccc';
 	this.width = '100%';
 	this.height= '100%';
-	this.direction = 'asc';//направление вывода по возрастанию индекса - asc|desc - по уменьшению
+	this.direction = 'asc';//РЅР°РїСЂР°РІР»РµРЅРёРµ РІС‹РІРѕРґР° РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ РёРЅРґРµРєСЃР° - asc|desc - РїРѕ СѓРјРµРЅСЊС€РµРЅРёСЋ
 	this.columns = new Array;
-	this.records = new Array;//каждая запись - это массив из значений
+	this.records = new Array;//РєР°Р¶РґР°СЏ Р·Р°РїРёСЃСЊ - СЌС‚Рѕ РјР°СЃСЃРёРІ РёР· Р·РЅР°С‡РµРЅРёР№
 	
 	this.style = 0;
 	this.Init = function(){
-		//инициализация, в данный момент тупо дописываем поле ['_sel'] к каждой записи, чтобы использовать для визуализации
-		//выбранных строк
+		//РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ, РІ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ С‚СѓРїРѕ РґРѕРїРёСЃС‹РІР°РµРј РїРѕР»Рµ ['_sel'] Рє РєР°Р¶РґРѕР№ Р·Р°РїРёСЃРё, С‡С‚РѕР±С‹ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РґР»СЏ РІРёР·СѓР°Р»РёР·Р°С†РёРё
+		//РІС‹Р±СЂР°РЅРЅС‹С… СЃС‚СЂРѕРє
 		for(i in this.records){
 			this.records[i]['_sel']=false;
 		}
 	}
 	this.onmousemove=function(){
-		//заглушка
+		//Р·Р°РіР»СѓС€РєР°
 	}
 	this.onclick=function(id){
 		this.records[id]['_sel'] = !this.records[id]['_sel'];
@@ -35,15 +35,15 @@ function TTable(name,hname,maincontext){
 		switch(this.style){
 			case 0:
 				s = "<div onmousemove='" + this.name + ".onmousemove(event);' style='overflow:scroll;width:" + this.width + ";height:" + this.height + "' id='" + this.hname + "'>";
-				//оттут унутре таблицо
+				//РѕС‚С‚СѓС‚ СѓРЅСѓС‚СЂРµ С‚Р°Р±Р»РёС†Рѕ
 				s+="<table cellspacing=0 cellpadding=0>";
-				//выведем строку заголовков
+				//РІС‹РІРµРґРµРј СЃС‚СЂРѕРєСѓ Р·Р°РіРѕР»РѕРІРєРѕРІ
 				s+="<tr style='color:"+this.headercolor+";' bgcolor='"+this.headerbgcolor+"'>";
 				for(i in this.columns){
 					s+="<td width='"+this.columns[i]["width"]+"' style='border:#000000 1px solid'>"+this.columns[i]["name"]+"</td>";
 				}
 				s+='</tr>';
-				//выводим строки
+				//РІС‹РІРѕРґРёРј СЃС‚СЂРѕРєРё
 				var ts='';
 				var dts='';
 				var j;
@@ -86,5 +86,5 @@ function TTable(name,hname,maincontext){
 			break;
 		}
 		return s;
-	}//функция отрисовки, однако, она просто возвращает HTML! 
+	}//С„СѓРЅРєС†РёСЏ РѕС‚СЂРёСЃРѕРІРєРё, РѕРґРЅР°РєРѕ, РѕРЅР° РїСЂРѕСЃС‚Рѕ РІРѕР·РІСЂР°С‰Р°РµС‚ HTML! 
 }

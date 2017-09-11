@@ -1,4 +1,4 @@
-//визуальный компонент для отображения одного объявления
+//РІРёР·СѓР°Р»СЊРЅС‹Р№ РєРѕРјРїРѕРЅРµРЅС‚ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РѕРґРЅРѕРіРѕ РѕР±СЉСЏРІР»РµРЅРёСЏ
 function TOneAnnot(name,hname,maincontext){
 	this.name = name;
 	this.hname=hname;
@@ -9,7 +9,7 @@ function TOneAnnot(name,hname,maincontext){
 	this.width = '100%';
 	this.height= '100%';
 	this.chet = false;
-	this.Annot = null;//сюда будем передавать объявление
+	this.Annot = null;//СЃСЋРґР° Р±СѓРґРµРј РїРµСЂРµРґР°РІР°С‚СЊ РѕР±СЉСЏРІР»РµРЅРёРµ
 	
 	this.style = 0;
 	
@@ -50,7 +50,7 @@ function TOneAnnot(name,hname,maincontext){
 	}
 	
 	this.putToAnnot=function(){
-		//складывает измененённые данные обратно в итем
+		//СЃРєР»Р°РґС‹РІР°РµС‚ РёР·РјРµРЅРµРЅС‘РЅРЅС‹Рµ РґР°РЅРЅС‹Рµ РѕР±СЂР°С‚РЅРѕ РІ РёС‚РµРј
 		this.Annot["descr"]=document.getElementById(this.hname+'_descr').innerText;
 		if(document.getElementById(this.hname+'_check').checked){this.Annot["check"]=1;}else{this.Annot["check"]=0;}
 	}
