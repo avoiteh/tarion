@@ -1,0 +1,11 @@
+<?php
+class updateUchplan_soderzhanieAction{
+	function Go(){
+		$id=$_REQUEST['id']*1;
+		$dbuch_cont=new dbuch_cont();
+		//новые поля
+		
+		$dbuch_cont->update($id, ($_REQUEST['plann']*1), mysql_escape_string($_REQUEST['indexplan']), ($_REQUEST['predmet']*1), ($_REQUEST['theory']*1), ($_REQUEST['praktik']*1), ($_REQUEST['kursov']*1), ($_REQUEST['samost']*1), ($_REQUEST['kolvokontrol']*1), mysql_escape_string($_REQUEST['chassem1']), mysql_escape_string($_REQUEST['chassem2']), mysql_escape_string($_REQUEST['chassem3']), mysql_escape_string($_REQUEST['chassem4']), mysql_escape_string($_REQUEST['chassem5']), mysql_escape_string($_REQUEST['chassem6']), mysql_escape_string($_REQUEST['chassem7']), mysql_escape_string($_REQUEST['chassem8']), mysql_escape_string($_REQUEST['zachsem1']), mysql_escape_string($_REQUEST['zachsem2']), mysql_escape_string($_REQUEST['zachsem3']), mysql_escape_string($_REQUEST['zachsem4']), mysql_escape_string($_REQUEST['zachsem5']), mysql_escape_string($_REQUEST['zachsem6']), mysql_escape_string($_REQUEST['zachsem7']), mysql_escape_string($_REQUEST['zachsem8']), mysql_escape_string($_REQUEST['kurssem1']), mysql_escape_string($_REQUEST['kurssem2']), mysql_escape_string($_REQUEST['kurssem3']), mysql_escape_string($_REQUEST['kurssem4']), mysql_escape_string($_REQUEST['kurssem5']), mysql_escape_string($_REQUEST['kurssem6']), mysql_escape_string($_REQUEST['kurssem7']), mysql_escape_string($_REQUEST['kurssem8']), mysql_escape_string($_REQUEST['kontrsem1']), mysql_escape_string($_REQUEST['kontrsem2']), mysql_escape_string($_REQUEST['kontrsem3']), mysql_escape_string($_REQUEST['kontrsem4']), mysql_escape_string($_REQUEST['kontrsem5']), mysql_escape_string($_REQUEST['kontrsem6']), mysql_escape_string($_REQUEST['kontrsem7']), mysql_escape_string($_REQUEST['kontrsem8']), mysql_escape_string($_REQUEST['examsem1']), mysql_escape_string($_REQUEST['examsem2']), mysql_escape_string($_REQUEST['examsem3']), mysql_escape_string($_REQUEST['examsem4']), mysql_escape_string($_REQUEST['examsem5']), mysql_escape_string($_REQUEST['examsem6']), mysql_escape_string($_REQUEST['examsem7']), mysql_escape_string($_REQUEST['examsem8']));
+	}
+}
+?>

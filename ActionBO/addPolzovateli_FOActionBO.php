@@ -1,0 +1,63 @@
+<?php
+class addPolzovateli_FOActionBO{
+	function Go(){
+		$dbfront_user=new dbfront_user();
+if($_SESSION['Polzovateli_FO']['filter_check']['email']=='on'){
+	$email=$_SESSION['Polzovateli_FO']['filter']['email'];
+}else{
+	$email='';
+}
+if($_SESSION['Polzovateli_FO']['filter_check']['password']=='on'){
+	$password=$_SESSION['Polzovateli_FO']['filter']['password'];
+}else{
+	$password='';
+}
+if($_SESSION['Polzovateli_FO']['filter_check']['right']=='on'){
+	$right=$_SESSION['Polzovateli_FO']['filter']['right'];
+}else{
+	$right=0;
+}
+if($_SESSION['Polzovateli_FO']['filter_check']['login']=='on'){
+	$login=$_SESSION['Polzovateli_FO']['filter']['login'];
+}else{
+	$login='';
+}
+if($_SESSION['Polzovateli_FO']['filter_check']['family']=='on'){
+	$family=$_SESSION['Polzovateli_FO']['filter']['family'];
+}else{
+	$family='';
+}
+if($_SESSION['Polzovateli_FO']['filter_check']['name']=='on'){
+	$name=$_SESSION['Polzovateli_FO']['filter']['name'];
+}else{
+	$name='';
+}
+if($_SESSION['Polzovateli_FO']['filter_check']['otch']=='on'){
+	$otch=$_SESSION['Polzovateli_FO']['filter']['otch'];
+}else{
+	$otch='';
+}
+if($_SESSION['Polzovateli_FO']['filter_check']['dataworkstart']=='on'){
+	$dataworkstart=$_SESSION['Polzovateli_FO']['filter']['dataworkstart'];
+}else{
+	$dataworkstart=0;
+}
+if($_SESSION['Polzovateli_FO']['filter_check']['razryd']=='on'){
+	$razryd=$_SESSION['Polzovateli_FO']['filter']['razryd'];
+}else{
+	$razryd=0;
+}
+if($_SESSION['Polzovateli_FO']['filter_check']['category']=='on'){
+	$category=$_SESSION['Polzovateli_FO']['filter']['category'];
+}else{
+	$category=0;
+}
+if($_SESSION['Polzovateli_FO']['filter_check']['kabinet']=='on'){
+	$kabinet=$_SESSION['Polzovateli_FO']['filter']['kabinet'];
+}else{
+	$kabinet=0;
+}
+$dbfront_user->add( $email,  $password,  $right,  $login,  $family,  $name,  $otch,  $dataworkstart,  $razryd,  $category,  $kabinet);
+	}
+}
+?>

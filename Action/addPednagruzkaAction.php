@@ -1,0 +1,98 @@
+<?php
+class addPednagruzkaAction{
+	function Go(){
+		$dbped_nagr=new dbped_nagr();
+if($_SESSION['Pednagruzka']['filter_check']['god']=='on'){
+	$god=$_SESSION['Pednagruzka']['filter']['god'];
+}else{
+	$god='';
+}
+if($_SESSION['Pednagruzka']['filter_check']['prepod']=='on'){
+	$prepod=$_SESSION['Pednagruzka']['filter']['prepod'];
+}else{
+	$prepod=0;
+}
+if($_SESSION['Pednagruzka']['filter_check']['predmet']=='on'){
+	$predmet=$_SESSION['Pednagruzka']['filter']['predmet'];
+}else{
+	$predmet=0;
+}
+if($_SESSION['Pednagruzka']['filter_check']['gruppa']=='on'){
+	$gruppa=$_SESSION['Pednagruzka']['filter']['gruppa'];
+}else{
+	$gruppa=0;
+}
+if($_SESSION['Pednagruzka']['filter_check']['theory']=='on'){
+	$theory=$_SESSION['Pednagruzka']['filter']['theory'];
+}else{
+	$theory=0;
+}
+if($_SESSION['Pednagruzka']['filter_check']['praktik']=='on'){
+	$praktik=$_SESSION['Pednagruzka']['filter']['praktik'];
+}else{
+	$praktik=0;
+}
+if($_SESSION['Pednagruzka']['filter_check']['kurs']=='on'){
+	$kurs=$_SESSION['Pednagruzka']['filter']['kurs'];
+}else{
+	$kurs=0;
+}
+if($_SESSION['Pednagruzka']['filter_check']['kurstest']=='on'){
+	$kurstest=$_SESSION['Pednagruzka']['filter']['kurstest'];
+}else{
+	$kurstest=0;
+}
+if($_SESSION['Pednagruzka']['filter_check']['examine']=='on'){
+	$examine=$_SESSION['Pednagruzka']['filter']['examine'];
+}else{
+	$examine=0;
+}
+if($_SESSION['Pednagruzka']['filter_check']['allhour']=='on'){
+	$allhour=$_SESSION['Pednagruzka']['filter']['allhour'];
+}else{
+	$allhour=0;
+}
+if($_SESSION['Pednagruzka']['filter_check']['sem1chas']=='on'){
+	$sem1chas=$_SESSION['Pednagruzka']['filter']['sem1chas'];
+}else{
+	$sem1chas=0;
+}
+if($_SESSION['Pednagruzka']['filter_check']['sem1ned']=='on'){
+	$sem1ned=$_SESSION['Pednagruzka']['filter']['sem1ned'];
+}else{
+	$sem1ned=0;
+}
+if($_SESSION['Pednagruzka']['filter_check']['sem2chas']=='on'){
+	$sem2chas=$_SESSION['Pednagruzka']['filter']['sem2chas'];
+}else{
+	$sem2chas=0;
+}
+if($_SESSION['Pednagruzka']['filter_check']['sem2ned']=='on'){
+	$sem2ned=$_SESSION['Pednagruzka']['filter']['sem2ned'];
+}else{
+	$sem2ned=0;
+}
+if($_SESSION['Pednagruzka']['filter_check']['sem1vych']=='on'){
+	$sem1vych=$_SESSION['Pednagruzka']['filter']['sem1vych'];
+}else{
+	$sem1vych=0;
+}
+if($_SESSION['Pednagruzka']['filter_check']['sem2vych']=='on'){
+	$sem2vych=$_SESSION['Pednagruzka']['filter']['sem2vych'];
+}else{
+	$sem2vych=0;
+}
+if($_SESSION['Pednagruzka']['filter_check']['prikaz']=='on'){
+	$prikaz=$_SESSION['Pednagruzka']['filter']['prikaz'];
+}else{
+	$prikaz=0;
+}
+if($_SESSION['Pednagruzka']['filter_check']['remark']=='on'){
+	$remark=$_SESSION['Pednagruzka']['filter']['remark'];
+}else{
+	$remark='';
+}
+$dbped_nagr->add( $god,  $prepod,  $predmet,  $gruppa,  $theory,  $praktik,  $kurs,  $kurstest,  $examine,  $allhour,  $sem1chas,  $sem1ned,  $sem2chas,  $sem2ned,  $sem1vych,  $sem2vych,  $prikaz,  $remark);
+	}
+}
+?>
